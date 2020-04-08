@@ -47,8 +47,8 @@
         </a>
       </li>
       
-      <li <?php if ($page == 'tambahtransaksi') {echo 'class="active"';} ?>>
-        <a href="<?php echo base_url('Datatransaksi/prosesTambah'); ?>">
+      <li <?php if ($page == 'Datakaryawan') {echo 'class="active"';} ?>>
+        <a href="<?php echo base_url('Datakaryawan'); ?>">
           <i class="fa fa-street-view"></i>
           <span>Data Karyawan</span>
         </a>

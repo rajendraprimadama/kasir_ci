@@ -14,6 +14,7 @@
 		tampilSupplier();
 		tampilCustomer();
 		tampilKategori();
+		tampilKaryawan();
 		<?php
 			if ($this->session->flashdata('msg') != '') {
 				echo "effect_msg();";
@@ -482,4 +483,40 @@
 	$('#update-customer').on('hidden.bs.modal', function () {
 	  $('.form-msg').html('');
 	})
+
+	// region karyawan
+		$('#form-tambah-karyawan').submit(function(e) {
+			var data = $(this).serialize();
+
+			$.ajax({
+				method: 'POST',
+				url: '<?php echo base_url('Datakaryawan/prosesTambah'); ?>',
+				data: data
+			})
+			.done(function(data) {
+				var out = jQuery.parseJSON(data);
+
+				tampilCustomer();
+				if (out.status == 'form') {
+					$('.form-msg').html(out.msg);
+					effect_msg_form();
+				} else {
+					document.getElementById("form-tambah-karyawan").reset();
+					$('#tambah-karyawan').modal('hide');
+					$('.msg').html(out.msg);
+					effect_msg();
+				}
+			})
+			
+			e.preventDefault();
+		});
+
+		function tampilKaryawan() {
+		$.get('<?php echo base_url('Datakaryawan/tampil'); ?>', function(data) {
+			MyTable.fnDestroy();
+			$('#data-karyawan').html(data);
+			refresh();
+		});
+	}
+	// endregion karyawan
 </script>

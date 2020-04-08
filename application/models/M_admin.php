@@ -18,6 +18,17 @@ class M_admin extends CI_Model {
 
 		return $data->row();
 	}
+
+	public function insert($data) {
+		$sql = "INSERT INTO admin  (username,password,authority_level) VALUES (
+		'" .$data['v_username'] ."',
+		'" .md5($data['v_password']) ."',
+		'" .$data['v_authority'] ."')";
+
+		$this->db->query($sql);
+
+		return $this->db->affected_rows();
+	}
 }
 
 /* End of file M_admin.php */
