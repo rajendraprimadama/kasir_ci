@@ -93,9 +93,13 @@
 		$.ajax({
 			method: "POST",
 			url: "<?php echo base_url('Databarang/update'); ?>",
-			data: "id=" +id
+			data: "id=" +id,
+			beforeSend: function(){
+                myLoad('start','#list-data_wrapper');
+			}
 		})
 		.done(function(data) {
+			myLoad('end','#list-data_wrapper')
 			$('#tempat-modal').html(data);
 			$('#update-barang').modal('show');
 		})
@@ -140,9 +144,13 @@
 		$.ajax({
 			method: 'POST',
 			url: '<?php echo base_url('Databarang/prosesUpdate'); ?>',
-			data: data
+			data: data,
+			beforeSend: function(){
+                myLoad('start','#form-update-barang');
+			}
 		})
 		.done(function(data) {
+			myLoad('end','#form-update-barang');
 			var out = jQuery.parseJSON(data);
 
 			tampilBarang();

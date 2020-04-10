@@ -10,7 +10,7 @@
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-folder-close"></i>
       </span>
-      <input type="text" class="form-control" placeholder="Nama Barang" name="Namabarang" aria-describedby="sizing-addon2" value="<?php echo $dataBarang->nmbrg; ?>">
+      <input type="text" class="form-control keyFontUp" placeholder="Nama Barang" name="Namabarang" aria-describedby="sizing-addon2" value="<?php echo $dataBarang->nmbrg; ?>">
     </div>
 
    
@@ -34,21 +34,28 @@
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-arrow-down"></i>
       </span>
-      <input type="number" class="form-control" placeholder="Harga Beli" name="Hrgbeli" aria-describedby="sizing-addon2" value="<?php echo $dataBarang->hrgbeli; ?>">
+      <input type="text" class="form-control FormatKey text-right" placeholder="Harga Beli" name="Hrgbeli" aria-describedby="sizing-addon2" value="<?php echo $dataBarang->hrgbeli; ?>" maxlength="10">
     </div>
 
     <div class="input-group form-group">
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-share-alt"></i>
       </span>
-      <input type="number" class="form-control" placeholder="Harga Ecer" name="Hrgjual" aria-describedby="sizing-addon2" value="<?php echo $dataBarang->hrgjual; ?>">
+      <input type="text" class="form-control FormatKey text-right" placeholder="Harga Ecer" name="Hrgjual" aria-describedby="sizing-addon2" value="<?php echo $dataBarang->hrgjual_retail; ?>" maxlength="10">
     </div>
 
     <div class="input-group form-group">
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-random"></i>
       </span>
-      <input type="number" class="form-control" placeholder="Harga Grosir" name="Hrgjualgrosir" aria-describedby="sizing-addon2" value="<?php echo $dataBarang->hrgjual; ?>">
+      <input type="text" class="form-control FormatKey text-right" placeholder="Harga Grosir" name="Hrgjualgrosir" aria-describedby="sizing-addon2" value="<?php echo $dataBarang->hrgjual_grosir; ?>" maxlength="10">
+    </div>
+
+    <div class="input-group form-group">
+      <span class="input-group-addon" id="sizing-addon2">
+        <i class="glyphicon glyphicon-tags"></i>
+      </span>
+      <input type="text" class="form-control FormatKey text-right" placeholder="Stok Barang" name="stok" aria-describedby="sizing-addon2" maxlength="5" value="<?php echo $dataBarang->stok; ?>">
     </div>
 
 

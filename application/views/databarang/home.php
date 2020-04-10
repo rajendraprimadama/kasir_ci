@@ -14,14 +14,25 @@
     <table id="list-data" class="table table-bordered table-striped">
       <thead>
         <tr class="text-uppercase">
-          <th class="text-center" width="5%">No</th>
-          <th class="text-center">Nama Barang</th>
-          <th class="text-center">Kategori</th>
-          <th class="text-center">Harga Beli</th>
-          <th class="text-center">Harga Ecer</th>
-          <th class="text-center">Harga Grosir</th>
-          <th class="text-center">Stok</th>
-          <th class="text-center" width="20%">Aksi</th>
+          <th class="text-center" width="5%" rowspan="2">No</th>
+          <th class="text-center" rowspan="2">ID Barang</th>
+          <th class="text-center" rowspan="2">Nama Barang</th>
+          <th class="text-center" rowspan="2">Kategori</th>
+          <th class="text-center" rowspan="2">Harga Beli</th>
+
+          <th class="text-center" colspan="3">Harga Jual retail</th>
+          <th class="text-center" colspan="3">Harga jual grosir</th>
+          
+          <th class="text-center" width="5%" rowspan="2">Aksi</th>
+        </tr>
+        <tr class="text-uppercase">
+          <th class="text-center">pcs</th>
+          <th class="text-center">pax</th>
+          <th class="text-center">dus</th>
+          <th class="text-center">pcs</th>
+          <th class="text-center">pax</th>
+          <th class="text-center">dus</th>
+
         </tr>
       </thead>
       <!-- isi tabel merujuk pada asset/js/ajax.php dengan id data-barang-->
