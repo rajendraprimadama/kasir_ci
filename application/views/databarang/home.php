@@ -13,15 +13,15 @@
   <div class="box-body">
     <table id="list-data" class="table table-bordered table-striped">
       <thead>
-        <tr>
-          <th>#</th>
-          <th>Nama Barang</th>
-          <th>Kategori</th>
-          <th>Harga Beli</th>
-          <th>Harga Ecer</th>
-          <th>Harga Grosir</th>
-
-          <th style="text-align: center;">Aksi</th>
+        <tr class="text-uppercase">
+          <th class="text-center" width="5%">No</th>
+          <th class="text-center">Nama Barang</th>
+          <th class="text-center">Kategori</th>
+          <th class="text-center">Harga Beli</th>
+          <th class="text-center">Harga Ecer</th>
+          <th class="text-center">Harga Grosir</th>
+          <th class="text-center">Stok</th>
+          <th class="text-center" width="20%">Aksi</th>
         </tr>
       </thead>
       <!-- isi tabel merujuk pada asset/js/ajax.php dengan id data-barang-->

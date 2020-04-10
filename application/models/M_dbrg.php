@@ -20,8 +20,10 @@ class M_dbrg extends CI_Model {
 		$sql = "INSERT INTO data_barang VALUES('',
 		'" .$data['Namabarang'] ."',
 		'" .$data['Kategori'] ."',
-		'" .$data['Hrgbeli'] ."',
-		'" .$data['Hrgjual'] ."')";
+		'" .$this->saveInt($data['Hrgbeli'])."',
+		'" .$this->saveInt($data['Hrgjual'])."',
+		'" .$this->saveInt($data['Hrgjualgrosir'])."',
+		'" .$this->saveInt($data['stok'])."')";
 
 		$this->db->query($sql);
 
@@ -72,6 +74,20 @@ class M_dbrg extends CI_Model {
 		$data = $this->db->get('data_barang');
 
 		return $data->num_rows();
+	}
+
+	private function saveInt($param) {
+		$hasil = '';
+
+        if($param){
+            $nilai  = trim(str_replace("`", "", $param));
+            $hasil  = str_replace(",", "", $nilai);
+        }
+        else{
+            $hasil = '0';
+        }
+
+        return $hasil;
 	}
 }
 

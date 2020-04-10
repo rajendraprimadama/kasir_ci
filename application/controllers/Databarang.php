@@ -34,6 +34,7 @@ class Databarang extends AUTH_Controller {
 		$this->form_validation->set_rules('Kategori', 'Kategori', 'trim|required');
 		$this->form_validation->set_rules('Hrgbeli', 'Harga Beli', 'trim|required');
 		$this->form_validation->set_rules('Hrgjual', 'Harga Jual', 'trim|required');
+		$this->form_validation->set_rules('stok', 'Stok Barang', 'trim|required');
 
 		$data['dataKategori'] = $this->M_kategori->select_all();
 

@@ -109,9 +109,13 @@
 		$.ajax({
 			method: 'POST',
 			url: '<?php echo base_url('Databarang/prosesTambah'); ?>',
-			data: data
+			data: data,
+			beforeSend: function(){
+                myLoad('start','#form-tambah-barang');
+			}
 		})
 		.done(function(data) {
+			myLoad('end','#form-tambah-barang');
 			var out = jQuery.parseJSON(data);
 
 			tampilBarang();

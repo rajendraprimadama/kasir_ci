@@ -9,7 +9,7 @@
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-folder-close"></i>
       </span>
-      <input type="text" class="form-control" placeholder="Nama Barang" name="Namabarang" aria-describedby="sizing-addon2">
+      <input type="text" class="form-control keyFontUp" placeholder="Nama Barang" name="Namabarang" aria-describedby="sizing-addon2">
     </div>
 
     <div class="input-group form-group">
@@ -31,21 +31,28 @@
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-arrow-down"></i>
       </span>
-      <input type="text" onkeypress="return Angkasaja(event)" class="form-control" placeholder="Harga Beli" name="Hrgbeli" aria-describedby="sizing-addon2">
+      <input type="text" class="form-control FormatKey text-right" placeholder="Harga Beli" name="Hrgbeli" aria-describedby="sizing-addon2" maxlength="10">
     </div>
 
     <div class="input-group form-group">
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-share-alt"></i>
       </span>
-      <input type="text" onkeypress="return Angkasaja(event)" class="form-control" placeholder="Harga Jual Ecer" name="Hrgjual" aria-describedby="sizing-addon2">
+      <input type="text" class="form-control FormatKey text-right" placeholder="Harga Jual Ecer" name="Hrgjual" aria-describedby="sizing-addon2" maxlength="10">
     </div>
 
     <div class="input-group form-group">
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-random"></i>
       </span>
-      <input type="text" onkeypress="return Angkasaja(event)" class="form-control" placeholder="Harga Jual Grosir" name="Hrgjualgrosir" aria-describedby="sizing-addon2">
+      <input type="text" class="form-control FormatKey text-right" placeholder="Harga Jual Grosir" name="Hrgjualgrosir" aria-describedby="sizing-addon2" maxlength="10">
+    </div>
+
+    <div class="input-group form-group">
+      <span class="input-group-addon" id="sizing-addon2">
+        <i class="glyphicon glyphicon-tags"></i>
+      </span>
+      <input type="text" class="form-control FormatKey text-right" placeholder="Stok Barang" name="stok" aria-describedby="sizing-addon2" maxlength="5">
     </div>
 
     <div class="form-group">
