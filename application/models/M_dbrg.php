@@ -45,18 +45,16 @@ class M_dbrg extends CI_Model {
 	}
 
 	public function update($data) {
-		$sql = "UPDATE data_barang SET nmbrg='" .$data['Namabarang'] ."',
-		kategori='" .$data['Kategori'] ."',
-		hrgbeli='" .$data['Hrgbeli'] ."',
-		hrgjual='" .$data['Hrgjual'] ."'
-		 WHERE id='" .$data['id'] ."'";
-
-		/*$sql = "UPDATE pegawai SET nama='" .$data['nama'] ."',
-		telp='" .$data['telp'] ."', 
-		id_kota=" .$data['kota'] .", 
-		id_kelamin=" .$data['jk'] .", 
-		id_posisi=" .$data['posisi'] ." 
-		WHERE id='" .$data['id'] ."'";*/
+		$sql = "UPDATE data_barang SET nama_brg='" .$data['v_namabrg'] ."',
+					kategori='" .$data['v_kategori'] ."',
+					hrg_beli='" .$this->saveInt($data['v_hrgbeli']) ."',
+					pcs_hrgjual_retail='" .$this->saveInt($data['v_pcs_hrgjual_retail']) ."',
+					pax_hrgjual_retail='" .$this->saveInt($data['v_pax_hrgjual_retail']) ."',
+					dus_hrgjual_retail='" .$this->saveInt($data['v_dus_hrgjual_retail']) ."',
+					pcs_hrgjual_grosir='" .$this->saveInt($data['v_pcs_hrgjual_grosir']) ."',
+					pax_hrgjual_grosir='" .$this->saveInt($data['v_pax_hrgjual_grosir']) ."',
+					dus_hrgjual_grosir='" .$this->saveInt($data['v_dus_hrgjual_grosir']) ."'
+				WHERE id='" .$data['id'] ."'";
 
 		$this->db->query($sql);
 
