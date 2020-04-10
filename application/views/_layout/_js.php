@@ -9,5 +9,11 @@
 <script src="<?php echo base_url(); ?>assets/dist/js/app.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/dist/js/select2.js"></script>
 
+<!-- LOADER -->
+<script src="<?php echo base_url(); ?>assets/plugins/loader/blockui.min.js"></script>
+
 <!-- My Ajax -->
-<?php include './assets/js/ajax.php'; ?>
+<?php 
+    include './assets/js/ajax.php';
+    include './assets/js/general.php';
+?>

@@ -22,6 +22,20 @@
 		?>
 	}
 
+	function myLoad(mode, param){
+		if(mode == 'start'){
+			$(param).block({
+				message: '<h3>Processing</h3>',
+				css: {
+					border: '3px solid #a00' 
+				}
+			});
+		}
+		else{
+			$(param).unblock();
+		}
+	}
+
 	function refresh() {
 		MyTable = $('#list-data').dataTable();
 	}
@@ -207,9 +221,13 @@
 		$.ajax({
 			method: 'POST',
 			url: '<?php echo base_url('Datakategori/prosesTambah'); ?>',
-			data: data
+			data: data,
+			beforeSend: function(){
+                myLoad('start','#form-tambah-kategori');
+			}
 		})
 		.done(function(data) {
+			myLoad('end','#form-tambah-kategori');
 			var out = jQuery.parseJSON(data);
 
 			tampilKategori();

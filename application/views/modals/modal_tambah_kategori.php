@@ -9,7 +9,7 @@
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-tags"></i>
       </span>
-      <input type="text" class="form-control" placeholder="Kategori" name="ktgr" aria-describedby="sizing-addon2">
+      <input type="text" class="form-control keyFontUp" placeholder="Kategori" name="ktgr" aria-describedby="sizing-addon2">
     </div>
 
     <div class="form-group">

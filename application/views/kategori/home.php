@@ -12,12 +12,12 @@
   <!-- /.box-header -->
   <div class="box-body">
     <table id="list-data" class="table table-bordered table-striped">
-      <thead>
+      <thead class="text-uppercase">
         <tr>
-          <th>#</th>
-          <th>Kategori Barang</th>
+          <th class="text-center" width="5%">NO</th>
+          <th class="text-center">Kategori Barang</th>
           
-          <th style="text-align: center;">Aksi</th>
+          <th class="text-center" width="20%">Aksi</th>
         </tr>
       </thead>
       <!-- isi tabel merujuk pada asset/js/ajax.php dengan id data-barang-->
