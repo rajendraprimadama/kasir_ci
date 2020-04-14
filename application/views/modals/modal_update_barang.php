@@ -17,12 +17,15 @@
 
     <div class="input-group form-group">
       <span class="input-group-addon" >Kategori Barang</span>
-      <select id='kategori' name="v_ategori" style='width: 100%;' class="form-control">
+      <select id='kategori' name="v_kategori" style='width: 100%;' class="form-control">
         <?php 
-          $options = "";
           foreach ($dataKategori as $key => $value) {
+            $isSelected = "";
+            if($value->id ==  $dataBarang->kategori) {
+              $isSelected = "selected";
+            }
         ?>
-          <option value='<?php echo $value->kategori; ?>'><?php echo $value->kategori;?></option>
+          <option value='<?php echo $value->id; ?>' <?php echo $isSelected ?>><?php echo $value->kategori;?></option>
           <!--masih menyimpan value kategori belum menyimpan id ke tabel barang-->
         <?php
         }

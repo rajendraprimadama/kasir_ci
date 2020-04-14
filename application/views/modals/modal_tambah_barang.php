@@ -15,8 +15,7 @@
     <div class="input-group form-group">
       <span class="input-group-addon" >Kategori Barang</span>
       <select id='kategori' name="v_kategori" style='width: 100%;' class="form-control">
-        <?php 
-          $options = "";
+        <?php
           foreach ($dataKategori as $key => $value) {
         ?>
           <option value='<?php echo $value->id; ?>'><?php echo $value->kategori;?></option>
