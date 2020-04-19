@@ -521,12 +521,16 @@
 			$.ajax({
 				method: 'POST',
 				url: '<?php echo base_url('Datakaryawan/prosesTambah'); ?>',
-				data: data
+				data: data,
+				beforeSend: function(){
+                	myLoad('start','#form-tambah-karyawan');
+				}
 			})
 			.done(function(data) {
+				myLoad('end','#form-tambah-karyawan');
 				var out = jQuery.parseJSON(data);
 
-				tampilCustomer();
+				tampilKaryawan();
 				if (out.status == 'form') {
 					$('.form-msg').html(out.msg);
 					effect_msg_form();
@@ -542,11 +546,11 @@
 		});
 
 		function tampilKaryawan() {
-		$.get('<?php echo base_url('Datakaryawan/tampil'); ?>', function(data) {
-			MyTable.fnDestroy();
-			$('#data-karyawan').html(data);
-			refresh();
-		});
-	}
+			$.get('<?php echo base_url('Datakaryawan/tampil'); ?>', function(data) {
+				MyTable.fnDestroy();
+				$('#data-karyawan').html(data);
+				refresh();
+			});
+		}
 	// endregion karyawan
 </script>

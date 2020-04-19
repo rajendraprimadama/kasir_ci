@@ -15,6 +15,7 @@ class Datakaryawan extends AUTH_Controller {
 		$data['page'] 		= "Datakaryawan";
 		$data['judul'] 		= "Data Karyawan";
 		$data['deskripsi'] 	= "Manage Data Karyawan";
+		$data['ListAuthority'] = $this->userdata->authority_level == "DEVELOPER" ? ['ADMIN', 'KASIR', 'DEVELOPER'] : ['ADMIN', 'KASIR'];
 
 		$data['modal_tambah_karyawan'] = show_my_modal('modals/modal_tambah_karyawan', 'tambah-karyawan', $data);
 

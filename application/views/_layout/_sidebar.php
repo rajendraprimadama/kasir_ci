@@ -34,7 +34,7 @@
       </li>
 
       <!-- on development -->
-      <?php if($userdata->authority_level == "developer"){ ?>
+      <?php if($userdata->authority_level == "DEVELOPER"){ ?>
         <li <?php if ($page == 'Datacustomer') {echo 'class="active"';} ?>>
           <a href="<?php echo base_url('Datacustomer'); ?>">
             <i class="fa fa-group"></i>
