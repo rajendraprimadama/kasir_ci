@@ -105,6 +105,7 @@
 <!-- region js -->
 <script type="text/javascript">
   $(document).ready(function(){
+
     $(document).on('change', '.v_hrgbeli', function(event){
         event.preventDefault();
         var arrObj = [
@@ -132,12 +133,14 @@
     let sell = $(param).val()
     
     if (buy==0 || buy.length==0) {
-      alert('Harga beli tidak boleh kosong atau 0')
+      myAlert('error','Harga beli tidak boleh kosong atau 0')
+      // alert('Harga beli tidak boleh kosong atau 0')
       $(param).val('')
     }
     else {
       if (sell < buy) {
-        alert('Harga jual tidak boleh lebih kecil dari harga beli')
+        myAlert('error','Harga jual tidak boleh lebih kecil dari harga beli')
+        // alert('Harga jual tidak boleh lebih kecil dari harga beli')
         $(param).val('')
       }
     }
