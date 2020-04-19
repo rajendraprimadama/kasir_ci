@@ -592,8 +592,8 @@
 					$('.form-msg').html(out.msg);
 					effect_msg_form();
 				} else {
-					document.getElementById("form-update-barang").reset();
-					$('#update-barang').modal('hide');
+					document.getElementById("form-update-karyawan").reset();
+					$('#update-karyawan').modal('hide');
 					$('.msg').html(out.msg);
 					effect_msg();
 				}
@@ -608,6 +608,26 @@
 
 		$('#update-karyawan').on('hidden.bs.modal', function () {
 			$('.form-msg').html('');
+		})
+
+		var id_karyawan;
+		$(document).on("click", ".konfirmasiHapus-karyawan", function() {
+			id_karyawan = $(this).attr("data-id");
+		})
+		$(document).on("click", ".hapus-dataKaryawan", function() {
+			var id = id_karyawan;
+			
+			$.ajax({
+				method: "POST",
+				url: "<?php echo base_url('Datakaryawan/delete'); ?>",
+				data: "id=" +id
+			})
+			.done(function(data) {
+				$('#konfirmasiHapus').modal('hide');
+				tampilKaryawan();
+				$('.msg').html(data);
+				effect_msg();
+			})
 		})
 	// endregion karyawan
 </script>

@@ -46,7 +46,7 @@ class M_karyawan extends CI_Model {
 	}
 
 	public function delete($id) {
-		$sql = "DELETE FROM data_customer WHERE id='" .$id ."'";
+		$sql = "DELETE FROM data_karyawan WHERE id='" .$id ."'";
 
 		$this->db->query($sql);
 

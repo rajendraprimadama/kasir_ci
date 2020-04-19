@@ -96,12 +96,12 @@ class Datakaryawan extends AUTH_Controller {
 
 	public function delete() {
 		$id = $_POST['id'];
-		$result = $this->M_customer->delete($id);
+		$result = $this->M_karyawan->delete($id);
 		
 		if ($result > 0) {
-			echo show_succ_msg('Data Barang Berhasil dihapus', '20px');
+			echo show_succ_msg('Data Karyawan Berhasil dihapus', '20px');
 		} else {
-			echo show_err_msg('Data Barang Gagal dihapus', '20px');
+			echo show_err_msg('Data Karyawan Gagal dihapus', '20px');
 		}
 	}
 }
