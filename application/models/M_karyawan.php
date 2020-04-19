@@ -34,18 +34,11 @@ class M_karyawan extends CI_Model {
 	}
 
 	public function update($data) {
-		$sql = "UPDATE data_karyawan SET namacustomer='" .$data['namacustomer'] ."',
-		alamat='" .$data['alamat'] ."',
-		telp='" .$data['telephon'] ."',
-		email='" .$data['email'] ."'
-		 WHERE id='" .$data['id'] ."'";
-
-		/*$sql = "UPDATE pegawai SET nama='" .$data['nama'] ."',
-		telp='" .$data['telp'] ."', 
-		id_kota=" .$data['kota'] .", 
-		id_kelamin=" .$data['jk'] .", 
-		id_posisi=" .$data['posisi'] ." 
-		WHERE id='" .$data['id'] ."'";*/
+		$sql = "UPDATE data_karyawan SET 
+					name='" .$data['v_nama'] ."',
+					address='" .$data['v_alamat'] ."',
+					phone='" .$data['v_phone'] ."'
+		 		WHERE id='" .$data['id'] ."'";
 
 		$this->db->query($sql);
 

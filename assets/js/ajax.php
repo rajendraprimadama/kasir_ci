@@ -552,5 +552,62 @@
 				refresh();
 			});
 		}
+
+		$(document).on("click", ".update-dataKaryawan", function() {
+			var id = $(this).attr("data-id");
+			
+			$.ajax({
+				method: "POST",
+				url: "<?php echo base_url('Datakaryawan/update'); ?>",
+				data: "id=" +id,
+				beforeSend: function(){
+					myLoad('start','#list-data_wrapper');
+				}
+			})
+			.done(function(data) {
+				myLoad('end','#list-data_wrapper')
+				console.log(data)
+				$('#tempat-modal').html(data);
+				$('#update-karyawan').modal('show');
+			})
+		})
+		
+		$(document).on('submit', '#form-update-karyawan', function(e){
+			var data = $(this).serialize();
+
+			$.ajax({
+				method: 'POST',
+				url: '<?php echo base_url('Datakaryawan/prosesUpdate'); ?>',
+				data: data,
+				beforeSend: function(){
+					myLoad('start','#form-update-karyawan');
+				}
+			})
+			.done(function(data) {
+				myLoad('end','#form-update-karyawan');
+				var out = jQuery.parseJSON(data);
+
+				tampilKaryawan();
+				if (out.status == 'form') {
+					$('.form-msg').html(out.msg);
+					effect_msg_form();
+				} else {
+					document.getElementById("form-update-barang").reset();
+					$('#update-barang').modal('hide');
+					$('.msg').html(out.msg);
+					effect_msg();
+				}
+			})
+			
+			e.preventDefault();
+		});
+
+		$('#tambah-karyawan').on('hidden.bs.modal', function () {
+			$('.form-msg').html('');
+		})
+
+		$('#update-karyawan').on('hidden.bs.modal', function () {
+			$('.form-msg').html('');
+		})
 	// endregion karyawan
 </script>

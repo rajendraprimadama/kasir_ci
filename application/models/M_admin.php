@@ -20,9 +20,10 @@ class M_admin extends CI_Model {
 	}
 
 	public function insert($data) {
-		$sql = "INSERT INTO admin  (username,password,authority_level) VALUES (
+		$sql = "INSERT INTO admin  (username,password,nama,authority_level) VALUES (
 		'" .$data['v_username'] ."',
 		'" .md5($data['v_password']) ."',
+		'" .$data['v_nama'] ."',
 		'" .$data['v_authority'] ."')";
 
 		$this->db->query($sql);
