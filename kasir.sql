@@ -25,17 +25,15 @@ CREATE TABLE `admin` (
   `username` varchar(15) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
   `nama` varchar(50) DEFAULT NULL,
-  `foto` varchar(255) DEFAULT NULL,
   `authority_level` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `admin` */
 
-insert  into `admin`(`id`,`username`,`password`,`nama`,`foto`,`authority_level`) values 
-(1,'admin','21232f297a57a5a743894a0e4a801fc3','admin','profil11.jpg','admin'),
-(2,'primadama','b0d6b4e1f6c2c4fd16c8114fc4edd087',NULL,NULL,'admin'),
-(3,'primadama','b0d6b4e1f6c2c4fd16c8114fc4edd087',NULL,NULL,'admin');
+insert  into `admin`(`id`,`username`,`password`,`nama`,`authority_level`) values 
+(1,'admin','21232f297a57a5a743894a0e4a801fc3','ADMIN','ADMIN'),
+(5,'developer','5e8edd851d2fdfbd7415232c67367cc3','RAJENDRA GUSTI PRIMADAMA','DEVELOPER');
 
 /*Table structure for table `data_barang` */
 
@@ -55,12 +53,12 @@ CREATE TABLE `data_barang` (
   `pax_hrgjual_grosir` int(10) DEFAULT '0',
   `dus_hrgjual_grosir` int(10) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `data_barang` */
 
 insert  into `data_barang`(`id`,`id_brg`,`barcode_brg`,`nama_brg`,`kategori`,`hrg_beli`,`pcs_hrgjual_retail`,`pax_hrgjual_retail`,`dus_hrgjual_retail`,`pcs_hrgjual_grosir`,`pax_hrgjual_grosir`,`dus_hrgjual_grosir`) values 
-(1,'TES00001',NULL,'TES BARANG PERTAMA','1',34343434,43434344,3434343,32323232,3232323,232323,2323232);
+(2,'KEC00001',NULL,'KECAP BANGO 20 ML','1',116000,1000,12000,144000,950,11400,136800);
 
 /*Table structure for table `data_customer` */
 
@@ -87,9 +85,14 @@ CREATE TABLE `data_karyawan` (
   `address` varchar(200) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `data_karyawan` */
+
+insert  into `data_karyawan`(`id`,`name`,`address`,`phone`) values 
+(1,'RAJENDRA GUSTI PRIMADAMA','JAKARTA','082231919441'),
+(2,'RIKI AJI PAMUNGKAS','JAKARTA','089'),
+(3,'MUHAMMAD ABDUL FATTAH','CILACAP','08222');
 
 /*Table structure for table `data_kategori` */
 
