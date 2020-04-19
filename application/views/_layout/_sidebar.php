@@ -19,13 +19,6 @@
       <li class="header">LIST MENU</li>
       <!-- Optionally, you can add icons to the links -->
 
-      <li <?php if ($page == 'Databarang') {echo 'class="active"';} ?>>
-        <a href="<?php echo base_url('Databarang'); ?>">
-          <i class="fa fa-suitcase"></i>
-          <span>Data Barang</span>
-        </a>
-      </li>
-
       <li <?php if ($page == 'Kategori') {echo 'class="active"';} ?>>
         <a href="<?php echo base_url('Datakategori'); ?>">
           <i class="fa fa-tasks"></i>
@@ -33,40 +26,54 @@
         </a>
       </li>
 
-      <li <?php if ($page == 'Datacustomer') {echo 'class="active"';} ?>>
-        <a href="<?php echo base_url('Datacustomer'); ?>">
-          <i class="fa fa-group"></i>
-          <span>Data Customer</span>
+      <li <?php if ($page == 'Databarang') {echo 'class="active"';} ?>>
+        <a href="<?php echo base_url('Databarang'); ?>">
+          <i class="fa fa-suitcase"></i>
+          <span>Data Barang</span>
         </a>
       </li>
 
-      <li <?php if ($page == 'Datasupplier') {echo 'class="active"';} ?>>
-        <a href="<?php echo base_url('Datasupplier'); ?>">
-          <i class="fa fa-truck"></i>
-          <span>Data Supplier</span>
-        </a>
-      </li>
-      
+      <!-- on development -->
+      <?php if($userdata->authority_level == "developer"){ ?>
+        <li <?php if ($page == 'Datacustomer') {echo 'class="active"';} ?>>
+          <a href="<?php echo base_url('Datacustomer'); ?>">
+            <i class="fa fa-group"></i>
+            <span>Data Customer</span>
+          </a>
+        </li>
+
+        <li <?php if ($page == 'Datasupplier') {echo 'class="active"';} ?>>
+          <a href="<?php echo base_url('Datasupplier'); ?>">
+            <i class="fa fa-truck"></i>
+            <span>Data Supplier</span>
+          </a>
+        </li>
+
+        <li <?php if ($page == 'Datatransaksi') {echo 'class="active"';} ?>>
+          <a href="<?php echo base_url('Datatransaksi'); ?>">
+            <i class="fa fa-laptop"></i>
+            <span>Penjualan</span>
+          </a>
+        </li>
+
+        
+        <li <?php if ($page == 'Datatransaksi') {echo 'class="active"';} ?>>
+          <a href="<?php echo base_url('Datatransaksi'); ?>">
+            <i class="fa fa-area-chart"></i>
+            <span>Laporan</span>
+          </a>
+        </li>
+      <?php } ?>
+
       <li <?php if ($page == 'Datakaryawan') {echo 'class="active"';} ?>>
         <a href="<?php echo base_url('Datakaryawan'); ?>">
           <i class="fa fa-street-view"></i>
           <span>Data Karyawan</span>
         </a>
       </li>
-    
-      <li <?php if ($page == 'Datatransaksi') {echo 'class="active"';} ?>>
-        <a href="<?php echo base_url('Datatransaksi'); ?>">
-          <i class="fa fa-laptop"></i>
-          <span>Penjualan</span>
-        </a>
-      </li>
 
-      <li <?php if ($page == 'Datatransaksi') {echo 'class="active"';} ?>>
-        <a href="<?php echo base_url('Datatransaksi'); ?>">
-          <i class="fa fa-area-chart"></i>
-          <span>Laporan</span>
-        </a>
-      </li>
+      <!-- end on development -->
+
 
     </ul>
     <!-- /.sidebar-menu -->
