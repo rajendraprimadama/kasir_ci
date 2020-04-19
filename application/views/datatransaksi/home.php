@@ -2,8 +2,9 @@
   <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-  <div class="box">
+  <?php $this->load->view('_layout/_meta'); ?>
+  <?php $this->load->view('_layout/_css'); ?>
+  <div class="box skin-blue sidebar-mini sidebar-collapse">
     <div class="box-header">
       <div class="col-md-30">
         <section class="content">
@@ -15,102 +16,98 @@
                 <ul class="nav nav-tabs">
                   <li class="active"><a href="#tab_1" data-toggle="tab">Jual Ecer</a></li>
                   <li><a href="#tab_2" data-toggle="tab">Jual Grosir</a></li>
-                  <li><a href="#tab_3" data-toggle="tab">Retur Barang</a></li>
                 </ul>
                 <div class="tab-content">
                   <div class="tab-pane active" id="tab_1">
-                    <form id="form-tambah-barang" class=" col-md-6" method="POST">
-
-                      <div class="input-group form-group">
-                        <span class="input-group-addon" id="sizing-addon2">
-                          <i class="glyphicon glyphicon-tags"></i>
-                        </span>
-                        <input type="text" name="kode_brg" id="kode_brg" class="typeahead tt-query form-control" autocomplete="off" spellcheck="false" placeholder="Type your Query">
-                      </div>
-
-                      <div class="form-group">
-                        <div class="col-md-12">
-                          <button type="submit" class="form-control btn btn-primary"> <i class="glyphicon glyphicon-ok"></i> Tambah Data Barang</button>
+                    <form action="<?php echo base_url().'Datatransaksi/add_to_cart'?>" method="post">
+                      <table>
+                        <tr>
+                          <th>Kode Barang</th>
+                        </tr>
+                        <tr>
+                          <th><input type="text" name="kode_brg" id="kode_brg" onkeyup="cekbarang()" onchange="cekbarang()" class="form-control input-sm"></th>                     
+                        </tr>
+                        <div id="detail_barang" style="position:absolute;">
                         </div>
-                      </div>
+                      </table>
                     </form>
-                    <form id="form-tambah-barang" class=" col-md-6" method="POST">
+                    <table class="table table-bordered table-condensed" style="font-size:11px;margin-top:10px;">
+                      <thead>
+                        <tr>
+                          <th>Kode Barang</th>
+                          <th>Nama Barang</th>
+                          <th style="text-align:center;">Satuan</th>
+                          <th style="text-align:center;">Harga(Rp)</th>
+                          <th style="text-align:center;">Diskon(Rp)</th>
+                          <th style="text-align:center;">Qty</th>
+                          <th style="text-align:center;">Sub Total</th>
+                          <th style="width:100px;text-align:center;">Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php $i = 1; 
 
-                      <div class="input-group form-group">
-                        <span class="input-group-addon" id="sizing-addon2">
-                          <i class="glyphicon glyphicon-tags"></i>
-                        </span>
-                        <input type="text" class="form-control" placeholder="Nama Barang" name="Namabarang" aria-describedby="sizing-addon2">
-                      </div>
+                        ?>
 
-                      <div class="form-group">
-                        <div class="col-md-12">
-                          <button type="submit" class="form-control btn btn-primary"> <i class="glyphicon glyphicon-ok"></i> Tambah Data Barang</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <!-- /.tab-pane -->
-                  <div class="tab-pane" id="tab_2">
-                    The European languages are members of the same family. Their separate existence is a myth.
-                    For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
-                    in their grammar, their pronunciation and their most common words. Everyone realizes why a
-                    new common language would be desirable: one could refuse to pay expensive translators. To
-                    achieve this, it would be necessary to have uniform grammar, pronunciation and more common
-                    words. If several languages coalesce, the grammar of the resulting language is more simple
-                    and regular than that of the individual languages.
-                  </div>
-                  <!-- /.tab-pane -->
-                  <div class="tab-pane" id="tab_3">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    It has survived not only five centuries, but also the leap into electronic typesetting,
-                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                    sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                    like Aldus PageMaker including versions of Lorem Ipsum.
-                  </div>
-                  <!-- /.tab-pane -->
+                        <?php foreach ($this->cart->contents() as $items): ?>
+                          <?php echo form_hidden($i.'[rowid]', $items['rowid']); ?>
+                          <tr>
+                           <td><?=$items['id'];?></td>
+                           <td><?=$items['name'];?></td>
+                           <td style="text-align:center;"><?=$items['satuan'];?></td>
+                           <td style="text-align:right;"><?php echo number_format($items['amount']);?></td>
+                           <td style="text-align:right;"><?php echo number_format($items['disc']);?></td>
+                           <td style="text-align:center;"><?php echo number_format($items['qty']);?></td>
+                           <td style="text-align:right;"><?php echo number_format($items['subtotal']);?></td>
+
+                           <td style="text-align:center;"><a href="<?php echo base_url().'Datatransaksi/remove/'.$items['rowid'];?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
+                         </tr>
+
+                         <?php $i++; ?>
+                       <?php endforeach; ?>
+                     </tbody>
+                   </table>
+                 </div>
+                 <!-- /.tab-pane -->
+                 <div class="tab-pane" id="tab_2">
+                  The European languages are members of the same family. Their separate existence is a myth.
+                  For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
+                  in their grammar, their pronunciation and their most common words. Everyone realizes why a
+                  new common language would be desirable: one could refuse to pay expensive translators. To
+                  achieve this, it would be necessary to have uniform grammar, pronunciation and more common
+                  words. If several languages coalesce, the grammar of the resulting language is more simple
+                  and regular than that of the individual languages.
                 </div>
-                <!-- /.tab-content -->
+
+                <!-- /.tab-pane -->
               </div>
-              <!-- nav-tabs-custom -->
+              <!-- /.tab-content -->
             </div>
-            <!-- /.col -->
+            <!-- nav-tabs-custom -->
           </div>
-          <script type="text/javascript" language="javascript">
-            $( function() {
-              /*$("#kode_brg").autocomplete('<?php echo site_url("Datatransaksi/item_search"); ?>',
-              {
-                minChars:0,
-                max:100,
-                delay:10,
-                selectFirst: false,
-                formatItem: function(row) {
-                  alert("a")
-                  return row[1];
-                }
-              });*/
-              var availableTags = "";
-              $("#sample_search").keyup(function () {
-                var that = this,
-                value = $(this).val();
-                $.ajax({
-                  type: "POST",
-                  url: "",
-                  datatype: "text",
-                  data: {
-                    'search_keyword' : value
-                  },
-                  success: function(data) {
-                    alert(data);
-                  }
-                });
+          <!-- /.col -->
+        </div>
+        <script type="text/javascript" language="javascript">
+          $(document).ready(function(){
+            //Ajax kabupaten/kota insert
+            $("#kode_brg").focus();
+          });
 
-              });
-              $( "#kode_brg" ).autocomplete({
-                source: availableTags
-              });
-            } );
+          function cekbarang() {
+            var kode_brg = document.getElementById("kode_brg").value;
+            if (kode_brg.length == 5) {
+              var kobar = {kode_brg};
+              $.ajax({
+               type: "POST",
+               url : "<?php echo base_url().'Datatransaksi/get_barang';?>",
+               data: kobar,
+               success: function(msg){
+                 $('#detail_barang').html(msg);
+                 document.getElementById("qty").focus();
+               }
+             });
+            }
 
-          </script>
+          }
+        </script>
+        <?php $this->load->view('_layout/_js'); ?>

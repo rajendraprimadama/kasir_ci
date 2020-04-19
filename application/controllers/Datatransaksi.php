@@ -25,9 +25,76 @@ class Datatransaksi extends AUTH_Controller {
 
 		//$data['modal_tambah_pegawai'] = show_my_modal('modals/modal_tambah_pegawai', 'tambah-pegawai', $data);
 
-		$this->template->views('datatransaksi/home', $data);
+		$this->load->view('datatransaksi/home', $data);
 	}
 
+	function remove(){
+		if('a' == 'a'){
+			$row_id=$this->uri->segment(3);
+			$this->cart->update(array(
+				'rowid'      => $row_id,
+				'qty'     => 0
+			));
+			redirect('Datatransaksi');
+		}else{
+			echo "Halaman tidak ditemukan";
+		}
+	}
+
+	function get_barang(){
+		if('a' == 'a'){
+			$kobar=$this->input->post('kode_brg');
+			$x['brg']=$this->M_barang->get_barang($kobar);
+			$this->load->view('datatransaksi/v_detail_barang',$x);
+		}else{
+			echo "Halaman tidak ditemukan";
+		}
+	}
+
+	function add_to_cart(){
+			//break;
+		if('a' == 'a'){
+			$kobar=$this->input->post('kode_brg');
+			$produk=$this->M_barang->get_barang($kobar);
+			$i=$produk->row_array();
+			$data = array(
+				'id'       => $i['id_brg'],
+				'name'     => $i['nama_brg'],
+				'satuan'   => 'PCS',
+				'harpok'   => $i['hrg_beli'],
+				'price'    => str_replace(",", "", $i['pcs_hrgjual_retail']),
+				'disc'     => $this->input->post('diskon'),
+				'qty'      => $this->input->post('qty'),
+				'amount'	  => str_replace(",", "", $this->input->post('harjul'))
+			);
+			//print_r($data);
+			if(!empty($this->cart->total_items())){
+				foreach ($this->cart->contents() as $items){
+					$id=$items['id'];
+					$qtylama=$items['qty'];
+					$rowid=$items['rowid'];
+					$kobar=$this->input->post('kode_brg');
+					$qty=$this->input->post('qty');
+					if($id==$kobar){
+						$up=array(
+							'rowid'=> $rowid,
+							'qty'=>$qtylama+$qty
+						);
+						$this->cart->update($up);
+					}else{
+						$this->cart->insert($data);
+					}
+				}
+			}else{
+				$this->cart->insert($data);
+			//	print_r($this->cart->contents());
+			}
+			//print_r($this->cart->contents());
+			redirect('datatransaksi');
+		}else{
+			echo "Halaman tidak ditemukan";
+		}
+	}
 
 	public function tampil() {
 		$data['dataDtransaksi'] = $this->M_dtransaksi->select_all();

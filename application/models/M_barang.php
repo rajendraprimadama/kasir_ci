@@ -25,7 +25,7 @@ class M_barang extends CI_Model{
 
 
 	function get_barang($kobar){
-		$hsl=$this->db->query("SELECT * FROM tbl_barang where barang_id='$kobar'");
+		$hsl=$this->db->query("SELECT * FROM data_barang where barcode_brg='$kobar'");
 		return $hsl;
 	}
 
