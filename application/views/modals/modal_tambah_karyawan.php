@@ -9,14 +9,14 @@
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-user"></i>
       </span>
-      <input type="text" class="form-control" placeholder="Nama Karyawan" name="v_nama" aria-describedby="sizing-addon2" required>
+      <input type="text" class="form-control keyFontUp" placeholder="Nama Karyawan" name="v_nama" aria-describedby="sizing-addon2" required>
     </div>
 
     <div class="input-group form-group">
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-map-marker"></i>
       </span>
-      <input type="text" class="form-control" placeholder="Alamat Karyawan" name="v_alamat" aria-describedby="sizing-addon2" required>
+      <input type="text" class="form-control keyFontUp" placeholder="Alamat Karyawan" name="v_alamat" aria-describedby="sizing-addon2" required>
     </div>
 
     <div class="input-group form-group">
@@ -27,13 +27,18 @@
     </div>
 
     <div class="input-group form-group">
-        <span class="input-group-addon" id="sizing-addon2">
-            <i class="glyphicon glyphicon-lock"></i>
+        <span class="input-group-addon bg-warning">
+            AKSES SISTEM
         </span>
         <select class="form-control" name="v_authority" placeholder="tambah akses" onchange="addAccess()">
             <option value="no_access">TIDAK ADA AKSES</option>
-            <option value="admin">ADMIN</option>
-            <option value="kasir">KASIR</option>
+            <?php 
+            foreach($ListAuthority as $key => $val){
+            ?>
+
+              <option value="<?php echo $val ?>"><?php echo $val ?></option>
+            
+            <?php } ?>
         </select>
     </div>
 

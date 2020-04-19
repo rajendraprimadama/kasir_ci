@@ -15,6 +15,7 @@ class Datakaryawan extends AUTH_Controller {
 		$data['page'] 		= "Datakaryawan";
 		$data['judul'] 		= "Data Karyawan";
 		$data['deskripsi'] 	= "Manage Data Karyawan";
+		$data['ListAuthority'] = $this->userdata->authority_level == "DEVELOPER" ? ['ADMIN', 'KASIR', 'DEVELOPER'] : ['ADMIN', 'KASIR'];
 
 		$data['modal_tambah_karyawan'] = show_my_modal('modals/modal_tambah_karyawan', 'tambah-karyawan', $data);
 
@@ -62,28 +63,28 @@ class Datakaryawan extends AUTH_Controller {
 		$data['userdata'] 	= $this->userdata;
 
 		$id 				= trim($_POST['id']);
-		$data['dataCustomer'] = $this->M_customer->select_by_id($id);
+		$data['dataKaryawan'] = $this->M_karyawan->select_by_id($id);
+		$data['ListAuthority'] = $this->userdata->authority_level == "DEVELOPER" ? ['ADMIN', 'KASIR', 'DEVELOPER'] : ['ADMIN', 'KASIR'];
 
-		echo show_my_modal('modals/modal_update_customer', 'update-customer', $data);
+		echo show_my_modal('modals/modal_update_karyawan', 'update-karyawan', $data);
 	}
 
 	public function prosesUpdate() {
 		//cek validasi sebelum data dikirim ke model M_customer function update
-		$this->form_validation->set_rules('namacustomer', 'Nama Customer', 'trim|required');
-		$this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
-		$this->form_validation->set_rules('telephon', 'Telephon', 'trim|required');
-		$this->form_validation->set_rules('email', 'Email', 'trim|required');
+		$this->form_validation->set_rules('v_nama', 'Nama Karyawan', 'trim|required');
+		$this->form_validation->set_rules('v_alamat', 'Alamat Karyawan', 'trim|required');
+		$this->form_validation->set_rules('v_phone', 'Nomor Telephone', 'trim|required');
 
 		$data 	= $this->input->post();
 		if ($this->form_validation->run() == TRUE) {
-			$result = $this->M_customer->update($data);
+			$result = $this->M_karyawan->update($data);
 
 			if ($result > 0) {
 				$out['status'] = '';
-				$out['msg'] = show_succ_msg('Data Customer Berhasil diupdate', '20px');
+				$out['msg'] = show_succ_msg('Data Karyawan Berhasil diupdate', '20px');
 			} else {
 				$out['status'] = '';
-				$out['msg'] = show_succ_msg('Data Customer Gagal diupdate', '20px');
+				$out['msg'] = show_succ_msg('Data Karyawan Gagal diupdate', '20px');
 			}
 		} else {
 			$out['status'] = 'form';

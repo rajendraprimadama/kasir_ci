@@ -22,9 +22,9 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item btn-warning update-dataBarang" data-id="<?php echo $data_barang->id; ?>"><i class="glyphicon glyphicon-repeat"></i> Update</button>
-                </a></li>
-              <li><a class="dropdown-item btn-danger konfirmasiHapus-barang" data-id="<?php echo $data_barang->id; ?>" data-toggle="modal" data-target="#konfirmasiHapus"><i class="glyphicon glyphicon-remove-sign"></i> Delete</a></li>
+              <li><a class="dropdown-item update-dataBarang" data-id="<?php echo $data_barang->id; ?>"><i class="glyphicon glyphicon-repeat text-info"></i> Update</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a class="dropdown-item konfirmasiHapus-barang" data-id="<?php echo $data_barang->id; ?>" data-toggle="modal" data-target="#konfirmasiHapus"><i class="glyphicon glyphicon-remove-sign text-danger"></i> Delete</a></li>
             </ul>
           </div>
         </div>

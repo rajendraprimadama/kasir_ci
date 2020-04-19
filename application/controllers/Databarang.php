@@ -66,10 +66,10 @@ class Databarang extends AUTH_Controller {
 
 	public function prosesUpdate() {
 		//cek validasi sebelum data dikirim ke model M_dbrg function update
-		$this->form_validation->set_rules('Namabarang', 'Nama Barang', 'trim|required');
-		$this->form_validation->set_rules('Kategori', 'Kategori', 'trim|required');
-		$this->form_validation->set_rules('Hrgbeli', 'Harga Beli', 'trim|required');
-		$this->form_validation->set_rules('Hrgjual', 'Harga Jual', 'trim|required');
+		// $this->form_validation->set_rules('v_namabrg', 'Nama Barang', 'trim|required');
+		$this->form_validation->set_rules('v_kategori', 'Kategori', 'trim|required');
+		// $this->form_validation->set_rules('Hrgbeli', 'Harga Beli', 'trim|required');
+		// $this->form_validation->set_rules('Hrgjual', 'Harga Jual', 'trim|required');
 
 		$data 	= $this->input->post();
 		if ($this->form_validation->run() == TRUE) {
