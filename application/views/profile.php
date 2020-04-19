@@ -3,7 +3,7 @@
     <!-- Profile Image -->
     <div class="box box-primary">
       <div class="box-body box-profile">
-        <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url(); ?>assets/img/<?php echo $userdata->foto; ?>" alt="User profile picture">
+        <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url(); ?>assets/img/profil1.jpg" alt="User profile picture">
 
         <h3 class="profile-username text-center"><?php echo $userdata->nama; ?></h3>
 
@@ -22,7 +22,7 @@
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
         <li class="active"><a href="#settings" data-toggle="tab">Settings</a></li>
-        <li><a href="#password" data-toggle="tab">Ubah Password</a></li>
+        <li><a href="#password" data-toggle="tab" disabled>Ubah Password</a></li>
       </ul>
       <div class="tab-content">
         <div class="active tab-pane" id="settings">

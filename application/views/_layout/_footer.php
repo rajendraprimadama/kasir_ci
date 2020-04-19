@@ -1,8 +1,7 @@
 <footer class="main-footer">
 	<!-- To the right -->
-	<div class="pull-right hidden-xs">
-		Dashboard Admin
+	<div class="text-center hidden-xs">
+		<strong><a href="javascript:void(0)">Bismillah.Inc </a> || Copyright &copy; 2020 </strong> 
 	</div>
 	<!-- Default to the left -->
-	<strong>Copyright &copy; 2019 <a href="#">Alfa</a>.</strong> All rights reserved.
 </footer>

@@ -11,19 +11,16 @@
         <!-- Menu Toggle Button -->
         <a href="<?php echo base_url(); ?>assets/#" class="dropdown-toggle" data-toggle="dropdown">
           <!-- The user image in the navbar-->
-          <img src="<?php echo base_url(); ?>assets/img/<?php echo $userdata->foto; ?>" class="user-image" alt="User Image">
+          <img src="<?php echo base_url(); ?>assets/img/profil1.jpg" class="user-image" alt="User Image">
           <!-- hidden-xs hides the username on small devices so only the image appears. -->
           <span class="hidden-xs"><?php echo $userdata->nama; ?></span>
         </a>
         <ul class="dropdown-menu">
           <!-- The user image in the menu -->
           <li class="user-header">
-            <img src="<?php echo base_url(); ?>assets/img/<?php echo $userdata->foto; ?>" class="img-circle" alt="User Image">
+            <img src="<?php echo base_url(); ?>assets/img/profil1.jpg" class="img-circle" alt="User Image">
 
-            <p>
-              <?php echo $userdata->nama; ?>
-              <small>tani-KU v 1.0 2019</small>
-            </p>
+            <p><?php echo $userdata->nama; ?></p>
           </li>
           <!-- Menu Footer-->
           <li class="user-footer">
