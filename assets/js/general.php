@@ -243,4 +243,12 @@
             });
         }
     }
+
+    function FormatNumber(harga,desimal=0){
+        harga=parseFloat(harga);
+        harga=harga.toFixed(desimal);
+
+        s = addSeparatorsNF(harga, '.', '.', ',');
+        return s;
+    }
 </script>
