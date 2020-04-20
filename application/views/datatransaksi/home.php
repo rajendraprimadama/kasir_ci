@@ -67,6 +67,27 @@
                        <?php endforeach; ?>
                      </tbody>
                    </table>
+                   <form action="<?php echo base_url().'admin/penjualan/simpan_penjualan'?>" method="post">
+            <table>
+                <tr>
+                    <td style="width:760px;" rowspan="2"><button type="submit" class="btn btn-info btn-lg"> Simpan</button></td>
+                    <th style="width:140px;">Total Belanja(Rp)</th>
+                    <th style="text-align:right;width:140px;"><input type="text" name="total2" value="<?php echo number_format($this->cart->total());?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly></th>
+                    <input type="hidden" id="total" name="total" value="<?php echo $this->cart->total();?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
+                </tr>
+                <tr>
+                    <th>Tunai(Rp)</th>
+                    <th style="text-align:right;"><input type="text" id="jml_uang" name="jml_uang" class="jml_uang form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
+                    <input type="hidden" id="jml_uang2" name="jml_uang2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
+                </tr>
+                <tr>
+                    <td></td>
+                    <th>Kembalian(Rp)</th>
+                    <th style="text-align:right;"><input type="text" id="kembalian" name="kembalian" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
+                </tr>
+
+            </table>
+            </form>
                  </div>
                  <!-- /.tab-pane -->
                  <div class="tab-pane" id="tab_2">
@@ -103,11 +124,24 @@
                data: kobar,
                success: function(msg){
                  $('#detail_barang').html(msg);
-                 document.getElementById("qty").focus();
+                 document.getElementById("satuan").focus();
                }
              });
             }
 
           }
+
         </script>
+            <script type="text/javascript">
+        $(function(){
+            $('#jml_uang').on("input",function(){
+                var total=$('#total').val();
+                var jumuang=$('#jml_uang').val();
+                var hsl=jumuang.replace(/[^\d]/g,"");
+                $('#jml_uang2').val(hsl);
+                $('#kembalian').val(hsl-total);
+            })
+            
+        });
+    </script>
         <?php $this->load->view('_layout/_js'); ?>
