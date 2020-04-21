@@ -7,6 +7,7 @@ class Datatransaksi extends AUTH_Controller {
 		$this->load->model('M_dtransaksi');
 		$this->load->model('M_dpetani');
 		$this->load->model('M_barang');
+		$this->load->model('M_penjualan');
 	}
 
 	public function index() {
@@ -67,30 +68,43 @@ class Datatransaksi extends AUTH_Controller {
 				'qty'      => $this->input->post('qty'),
 				'amount'	  => str_replace(",", "", $this->input->post('harjul'))
 			);
-			//print_r($data);
-			if(!empty($this->cart->total_items())){
-				foreach ($this->cart->contents() as $items){
-					$id=$items['id'];
-					$qtylama=$items['qty'];
-					$rowid=$items['rowid'];
-					$kobar=$this->input->post('kode_brg');
-					$qty=$this->input->post('qty');
-					if($id==$kobar){
-						$up=array(
-							'rowid'=> $rowid,
-							'qty'=>$qtylama+$qty
-						);
-						$this->cart->update($up);
+			
+			$this->cart->insert($data);
+			redirect('datatransaksi');
+		}else{
+			echo "Halaman tidak ditemukan";
+		}
+	}
+
+	function simpan_penjualan(){
+		if('a' == 'a'){
+			$total=$this->input->post('total');
+			$jml_uang=str_replace(",", "", $this->input->post('jml_uang'));
+			$kembalian=$jml_uang-$total;
+			if(!empty($total) && !empty($jml_uang)){
+				if($jml_uang < $total){
+					echo $this->session->set_flashdata('msg','<label class="label label-danger">Jumlah Uang yang anda masukan Kurang</label>');
+					redirect('datatransaksi');
+				}else{
+					$nofak=$this->M_penjualan->get_nofak();
+					$this->session->set_userdata('nofak',$nofak);
+					$order_proses=$this->M_penjualan->simpan_penjualan($nofak,$total,$jml_uang,$kembalian);
+					if($order_proses){
+						$this->cart->destroy();
+
+						$this->session->unset_userdata('tglfak');
+						$this->session->unset_userdata('suplier');
+						$this->load->view('datatransaksi/home');	
 					}else{
-						$this->cart->insert($data);
+						redirect('datatransaksi');
 					}
 				}
+
 			}else{
-				$this->cart->insert($data);
-			//	print_r($this->cart->contents());
+				echo $this->session->set_flashdata('msg','<label class="label label-danger">Penjualan Gagal di Simpan, Mohon Periksa Kembali Semua Inputan Anda!</label>');
+				redirect('datatransaksi');
 			}
-			//print_r($this->cart->contents());
-			redirect('datatransaksi');
+
 		}else{
 			echo "Halaman tidak ditemukan";
 		}

@@ -46,7 +46,7 @@
                       </thead>
                       <tbody>
                         <?php $i = 1; 
-
+                        //print_r($this->cart->contents());
                         ?>
 
                         <?php foreach ($this->cart->contents() as $items): ?>
@@ -67,37 +67,31 @@
                        <?php endforeach; ?>
                      </tbody>
                    </table>
-                   <form action="<?php echo base_url().'admin/penjualan/simpan_penjualan'?>" method="post">
-            <table>
-                <tr>
-                    <td style="width:760px;" rowspan="2"><button type="submit" class="btn btn-info btn-lg"> Simpan</button></td>
-                    <th style="width:140px;">Total Belanja(Rp)</th>
-                    <th style="text-align:right;width:140px;"><input type="text" name="total2" value="<?php echo number_format($this->cart->total());?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly></th>
-                    <input type="hidden" id="total" name="total" value="<?php echo $this->cart->total();?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
-                </tr>
-                <tr>
-                    <th>Tunai(Rp)</th>
-                    <th style="text-align:right;"><input type="text" id="jml_uang" name="jml_uang" class="jml_uang form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
-                    <input type="hidden" id="jml_uang2" name="jml_uang2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
-                </tr>
-                <tr>
-                    <td></td>
-                    <th>Kembalian(Rp)</th>
-                    <th style="text-align:right;"><input type="text" id="kembalian" name="kembalian" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
-                </tr>
+                   <form action="<?php echo base_url().'Datatransaksi/simpan_penjualan'?>" method="post">
+                    <table>
+                      <tr>
+                        <td style="width:760px;" rowspan="2"><button type="submit" class="btn btn-info btn-lg"> Simpan</button></td>
+                        <th style="width:140px;">Total Belanja(Rp)</th>
+                        <th style="text-align:right;width:140px;"><input type="text" name="total2" value="<?php echo number_format($this->cart->total());?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly></th>
+                        <input type="hidden" id="total" name="total" value="<?php echo $this->cart->total();?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
+                      </tr>
+                      <tr>
+                        <th>Tunai(Rp)</th>
+                        <th style="text-align:right;"><input type="text" id="jml_uang" name="jml_uang" class="jml_uang form-control input-sm FormatKey" style="text-align:right;margin-bottom:5px;" required></th>
+                        <input type="hidden" id="jml_uang2" name="jml_uang2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <th>Kembalian(Rp)</th>
+                        <th style="text-align:right;"><input type="text" id="kembalian" name="kembalian" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
+                      </tr>
 
-            </table>
-            </form>
-                 </div>
-                 <!-- /.tab-pane -->
-                 <div class="tab-pane" id="tab_2">
-                  The European languages are members of the same family. Their separate existence is a myth.
-                  For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
-                  in their grammar, their pronunciation and their most common words. Everyone realizes why a
-                  new common language would be desirable: one could refuse to pay expensive translators. To
-                  achieve this, it would be necessary to have uniform grammar, pronunciation and more common
-                  words. If several languages coalesce, the grammar of the resulting language is more simple
-                  and regular than that of the individual languages.
+                    </table>
+                  </form>
+                </div>
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="tab_2">
+                   <?php $this->load->view('datatransaksi/v_transaksi_grosir'); ?>
                 </div>
 
                 <!-- /.tab-pane -->
@@ -112,6 +106,7 @@
           $(document).ready(function(){
             //Ajax kabupaten/kota insert
             $("#kode_brg").focus();
+           
           });
 
           function cekbarang() {
@@ -132,16 +127,16 @@
           }
 
         </script>
-            <script type="text/javascript">
-        $(function(){
+        <script type="text/javascript">
+          $(function(){
             $('#jml_uang').on("input",function(){
-                var total=$('#total').val();
-                var jumuang=$('#jml_uang').val();
-                var hsl=jumuang.replace(/[^\d]/g,"");
-                $('#jml_uang2').val(hsl);
-                $('#kembalian').val(hsl-total);
+              var total=$('#total').val();
+              var jumuang=$('#jml_uang').val();
+              var hsl=jumuang.replace(/[^\d]/g,"");
+              $('#jml_uang2').val(hsl);
+              $('#kembalian').val(FormatNumber(hsl-total));
             })
             
-        });
-    </script>
+          });
+        </script>
         <?php $this->load->view('_layout/_js'); ?>

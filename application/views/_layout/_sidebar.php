@@ -48,14 +48,6 @@
             <span>Data Supplier</span>
           </a>
         </li>
-
-        <li <?php if ($page == 'Datatransaksi') {echo 'class="active"';} ?>>
-          <a href="<?php echo base_url('Datatransaksi'); ?>">
-            <i class="fa fa-laptop"></i>
-            <span>Penjualan</span>
-          </a>
-        </li>
-
         
         <li <?php if ($page == 'Datatransaksi') {echo 'class="active"';} ?>>
           <a href="<?php echo base_url('Datatransaksi'); ?>">
@@ -71,7 +63,18 @@
           <span>Data Karyawan</span>
         </a>
       </li>
-
+      <li <?php if ($page == 'Datatransaksi') {echo 'class="active"';} ?>>
+          <a href="<?php echo base_url('Datatransaksi'); ?>">
+            <i class="fa fa-laptop"></i>
+            <span>Penjualan</span>
+          </a>
+        </li>
+        <li <?php if ($page == 'Datatransaksi') {echo 'class="active"';} ?>>
+          <a href="<?php echo base_url('Datatransaksi'); ?>">
+            <i class="fa fa-laptop"></i>
+            <span>Report</span>
+          </a>
+        </li>
       <!-- end on development -->
 
 

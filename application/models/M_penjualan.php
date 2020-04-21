@@ -18,7 +18,7 @@ class M_penjualan extends CI_Model{
 
 	function simpan_penjualan($nofak,$total,$jml_uang,$kembalian){
 		$idadmin=$this->session->userdata('idadmin');
-		$this->db->query("INSERT INTO tbl_jual (jual_nofak,jual_total,jual_jml_uang,jual_kembalian,jual_user_id,jual_keterangan) VALUES ('$nofak','$total','$jml_uang','$kembalian','$idadmin','eceran')");
+		$this->db->query("INSERT INTO data_jual (jual_nofak,jual_total,jual_jml_uang,jual_kembalian,jual_user_id,jual_keterangan) VALUES ('$nofak','$total','$jml_uang','$kembalian','$idadmin','eceran')");
 		foreach ($this->cart->contents() as $item) {
 			$data=array(
 				'd_jual_nofak' 			=>	$nofak,
@@ -31,13 +31,13 @@ class M_penjualan extends CI_Model{
 				'd_jual_diskon'			=>	$item['disc'],
 				'd_jual_total'			=>	$item['subtotal']
 			);
-			$this->db->insert('tbl_detail_jual',$data);
-			$this->db->query("update tbl_barang set barang_stok=barang_stok-'$item[qty]' where barang_id='$item[id]'");
+			$this->db->insert('data_detail_jual',$data);
+			//$this->db->query("update tbl_barang set barang_stok=barang_stok-'$item[qty]' where barang_id='$item[id]'");
 		}
 		return true;
 	}
 	function get_nofak(){
-		$q = $this->db->query("SELECT MAX(RIGHT(jual_nofak,6)) AS kd_max FROM tbl_jual WHERE DATE(jual_tanggal)=CURDATE()");
+		$q = $this->db->query("SELECT MAX(RIGHT(jual_nofak,6)) AS kd_max FROM data_jual WHERE DATE(jual_tanggal)=CURDATE()");
         $kd = "";
         if($q->num_rows()>0){
             foreach($q->result() as $k){
@@ -53,7 +53,7 @@ class M_penjualan extends CI_Model{
 	//=====================Penjualan grosir================================
 	function simpan_penjualan_grosir($nofak,$total,$jml_uang,$kembalian){
 		$idadmin=$this->session->userdata('idadmin');
-		$this->db->query("INSERT INTO tbl_jual (jual_nofak,jual_total,jual_jml_uang,jual_kembalian,jual_user_id,jual_keterangan) VALUES ('$nofak','$total','$jml_uang','$kembalian','$idadmin','grosir')");
+		$this->db->query("INSERT INTO data_jual (jual_nofak,jual_total,jual_jml_uang,jual_kembalian,jual_user_id,jual_keterangan) VALUES ('$nofak','$total','$jml_uang','$kembalian','$idadmin','grosir')");
 		foreach ($this->cart->contents() as $item) {
 			$data=array(
 				'd_jual_nofak' 			=>	$nofak,
@@ -66,15 +66,15 @@ class M_penjualan extends CI_Model{
 				'd_jual_diskon'			=>	$item['disc'],
 				'd_jual_total'			=>	$item['subtotal']
 			);
-			$this->db->insert('tbl_detail_jual',$data);
-			$this->db->query("update tbl_barang set barang_stok=barang_stok-'$item[qty]' where barang_id='$item[id]'");
+			$this->db->insert('data_detail_jual',$data);
+			//$this->db->query("update tbl_barang set barang_stok=barang_stok-'$item[qty]' where barang_id='$item[id]'");
 		}
 		return true;
 	}
 
 	function cetak_faktur(){
 		$nofak=$this->session->userdata('nofak');
-		$hsl=$this->db->query("SELECT jual_nofak,DATE_FORMAT(jual_tanggal,'%d/%m/%Y %H:%i:%s') AS jual_tanggal,jual_total,jual_jml_uang,jual_kembalian,jual_keterangan,d_jual_barang_nama,d_jual_barang_satuan,d_jual_barang_harjul,d_jual_qty,d_jual_diskon,d_jual_total FROM tbl_jual JOIN tbl_detail_jual ON jual_nofak=d_jual_nofak WHERE jual_nofak='$nofak'");
+		$hsl=$this->db->query("SELECT jual_nofak,DATE_FORMAT(jual_tanggal,'%d/%m/%Y %H:%i:%s') AS jual_tanggal,jual_total,jual_jml_uang,jual_kembalian,jual_keterangan,d_jual_barang_nama,d_jual_barang_satuan,d_jual_barang_harjul,d_jual_qty,d_jual_diskon,d_jual_total FROM data_jual JOIN data_detail_jual ON jual_nofak=d_jual_nofak WHERE jual_nofak='$nofak'");
 		return $hsl;
 	}
 	

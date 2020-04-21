@@ -43,11 +43,11 @@
 								$("#satuan").change(function() {
 									var kode_satuan = $("#satuan").val();
 									if (kode_satuan == '1') {
-										$("#harjul").val(<?php echo number_format($b['pcs_hrgjual_retail']);?>)
+										$("#harjul").val(FormatNumber(<?php echo $b['pcs_hrgjual_retail'];?>))
 									}else if(kode_satuan == '2'){
-										$("#harjul").val(<?php echo number_format($b['pax_hrgjual_retail']);?>)
+										$("#harjul").val(FormatNumber(<?php echo $b['pax_hrgjual_retail'];?>))
 									}else{
-										$("#harjul").val(<?php echo number_format($b['dus_hrgjual_retail']);?>)
+										$("#harjul").val(FormatNumber(<?php echo $b['dus_hrgjual_retail'];?>))
 									}
 								});
 
