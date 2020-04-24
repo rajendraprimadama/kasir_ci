@@ -266,4 +266,14 @@
         }
         return nStr + nStrEnd;
     }
+
+    if (cekElement(".datepicker-trans")){
+        $( ".datepicker-trans" ).datepicker({
+            dateFormat: "dd-mm-yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-5:+10",
+            autoClose: true
+        });
+    }
 </script>

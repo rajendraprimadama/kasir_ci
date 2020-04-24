@@ -17,5 +17,13 @@ class Datareport extends AUTH_Controller {
         $data['deskripsi'] 	= "Manage Data Report";
 
 		$this->template->views('datareport/home', $data);
-    }
+	}
+	
+	public function getData() {
+		$param 	= $this->input->post();
+		$result = $this->M_report->getData($param);
+
+		$data['datatable'] = $result;
+		return $this->load->view('datareport/list_data', $data);
+	}
 }

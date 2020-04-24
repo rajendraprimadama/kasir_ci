@@ -1,4 +1,4 @@
-<div class="box">
+<div class="box" style="margin-bottom:5px !important">
   <div class="box-header" style="padding-bottom:1px">
     <div class="row">
       <div class="col-md-3">
@@ -17,7 +17,7 @@
           <span class="input-group-addon" id="sizing-addon2">
             <i class="glyphicon glyphicon-calendar"></i>
           </span>
-          <input type="text" class="form-control v_startdate" name="v_startdate" placeholder="dd mm yyyy" readonly>
+          <input type="text" class="form-control v_enddate" name="v_enddate" placeholder="dd mm yyyy" readonly>
         </div>
       </div>
       <div class="col-md-4 text-right">
@@ -31,7 +31,27 @@
 
   <!-- /.box-header -->
   <div class="box-body">
+    <div class="table-responsive bg-white mb-3 " style="height:350px; overflow-y: scroll;">
+      <table class="table table-bordered table-xs table-striped table-hover table-data" >
+          <thead class="text-uppercase">
+              <tr>
+                  <th class="text-center" width="1%">NO</th>
+                  <th class="text-center">No Transaksi</th>
+                  <th class="text-center">Tanggal</th>
+                  <th class="text-center">Total Harga</th>
+                  <th class="text-center">Keterangan</th>
+              </tr>
+          </thead>
+          <tbody class="tbody-report">
+            <tr>
+                <td class="text-center text-uppercase" colspan="100%">No Data</td>
+            </tr>
+          </body>
+        <thead>
+      </table>
+    </div>
   </div>
+
 </div>
 
 <?php $this->load->view('datareport/plugin'); ?>
