@@ -5,10 +5,11 @@
         });
 
         $('.v_startdate').datepicker({
+            autoclose:true,
             changeMonth: true,
             changeYear: true,
-            yearRange: "-60:+1",
-            minDate: new Date(),
+            yearRange: "-100:+0",
+            endDate: new Date(),
             onClose: function () {
                 $('.v_enddate').prop('readonly', true);
                 $('.v_enddate').val(null);
@@ -16,16 +17,17 @@
                 if (minDate) {
                     minDate.setDate(minDate.getDate() + 1) + minDate.getFullYear();
                 }
-                $('.v_enddate').datepicker('option', 'minDate', minDate || 1);
+                $('.v_enddate').datepicker('option', 'startDate', minDate || 1);
 
                 $('.v_enddate').val(null);
             }
         });
 
         $('.v_enddate').datepicker({
+            autoclose:true,
             changeMonth: true,
             changeYear: true,
-            minDate: 1,
+            endDate: new Date(),
             onClose: function () {
                 $('.v_startdate').datepicker('option', 'maxDate');
             }
@@ -37,14 +39,20 @@
         _logic: (element) => {
             switch($(element).attr('data-action')) {
                 case 'search':
-                    if($('input[name=v_stardate]').val().length>0 || $('input[name=v_enddate]').val().length>0) {
+                    if($('input[name=v_stardate]').val().length==0) {
+                        myAlert('error', 'PILIH TANGGAL AWAL')
+                    }
+                    else if($('input[name=v_enddate]').val().length==0){
+                        myAlert('error', 'PILIH TANGGAL AKHIR')
+                    }
+                    else{
                         let data = {
                             startdate: $('input[name=v_stardate]').val(),
                             enddate: $('input[name=v_enddate]').val()
                         }
                         $.ajax({
                             method: "POST",
-                            url: "<?php echo base_url('Datareport/getData'); ?>",
+                            url: "<?php echo base_url('Datareport/getDataPenjualan'); ?>",
                             data: data,
                             beforeSend: function(){
                                 myLoad('start','.box-body');
@@ -55,9 +63,7 @@
                             $('.tbody-report').empty().html(data)
                         })
                     }
-                    else {
-                        myAlert('error', 'Pilih tanggal dulu')
-                    }
+                    
                     break;
 
                 case 'print':

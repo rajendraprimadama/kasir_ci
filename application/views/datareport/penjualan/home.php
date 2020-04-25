@@ -54,4 +54,4 @@
 
 </div>
 
-<?php $this->load->view('datareport/plugin'); ?>
+<?php $this->load->view('datareport/penjualan/plugin'); ?>

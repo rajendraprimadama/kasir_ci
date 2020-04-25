@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_report extends CI_Model {
-    function getData($param){
+    function getDataPenjualan($param){
         $startDate = $param['startdate'];
         $endDate = $param['enddate'];
 

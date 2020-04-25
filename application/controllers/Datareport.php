@@ -7,23 +7,21 @@ class Datareport extends AUTH_Controller {
 		$this->load->model('M_report');
 	}
 
-	public function index() {
+	public function penjualan() {
         $data['userdata'] 	= $this->userdata;
         
-        $data['ListReport'] = [''];
-  		
 		$data['page'] 		= "Datareport";
-		$data['judul'] 		= "Data Report";
-        $data['deskripsi'] 	= "Manage Data Report";
+		$data['judul'] 		= "Data Report Penjualan";
+        $data['deskripsi'] 	= "";
 
-		$this->template->views('datareport/home', $data);
+		$this->template->views('datareport/penjualan/home', $data);
 	}
 	
-	public function getData() {
+	public function getDataPenjualan() {
 		$param 	= $this->input->post();
-		$result = $this->M_report->getData($param);
+		$result = $this->M_report->getDataPenjualan($param);
 
 		$data['datatable'] = $result;
-		return $this->load->view('datareport/list_data', $data);
+		return $this->load->view('datareport/penjualan/list_data', $data);
 	}
 }

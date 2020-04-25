@@ -71,14 +71,7 @@
         </a>
       </li>
 
-      <li class="tree view <?php if ($page == 'Datareport') {echo 'active';} ?>" >
-        <a href="<?php echo base_url('Datareport'); ?>">
-          <i class="fa fa-laptop"></i>
-          <span>Report</span>
-        </a>
-      </li>
-
-      <!-- <li class="treeview <?php if ($page == 'Datareport') {echo 'active';} ?>">
+      <li class="treeview <?php if ($page == 'Datareport') {echo 'active';} ?>">
           <a href="#">
             <i class="fa fa-laptop"></i>
             <span>Report</span>
@@ -87,14 +80,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> Pertanggal</a></li>
-            <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-            <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-            <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-            <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
+            <li><a href="<?php echo base_url('Datareport/penjualan'); ?>"><i class="fa fa-circle-o"></i> Penjualan</a></li>
+            <li><a href="<?php echo base_url('Datareport/profit'); ?>"><i class="fa fa-circle-o"></i> Laba Rugi</a></li>
           </ul>
-        </li> -->
+        </li>
       <!-- end on development -->
 
 
