@@ -12,6 +12,7 @@
 <!-- LOADER -->
 <script src="<?php echo base_url(); ?>assets/plugins/loader/blockui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/datepicker/js/bootstrap-datepicker.js"></script>
 
 <!-- My Ajax -->
 <?php 
