@@ -8,9 +8,9 @@
                     <td class="text-center"><?php echo $val->NO_Transaksi; ?></td>
                     <td class="text-center"><?php echo date('d M Y',strtotime($val->DATE)); ?></td>
                     <td class="text-center text-uppercase"><?php echo $val->Keterangan; ?></td>
-                    <td class="text-right"><?php echo $controller->FormatNumber($val->Total_HargaBeli,2); ?></td>
-                    <td class="text-right"><?php echo $controller->FormatNumber($val->Total_HargaJual,2); ?></td>
-                    <td class="text-right"><?php echo $controller->FormatNumber($val->Total_HargaJual-$val->Total_HargaBeli,2); ?></td>
+                    <td class="text-right"><?php echo $controller->FormatNumber($val->Total_HargaBeli); ?></td>
+                    <td class="text-right"><?php echo $controller->FormatNumber($val->Total_HargaJual); ?></td>
+                    <td class="text-right"><?php echo $controller->FormatNumber($val->Total_HargaJual-$val->Total_HargaBeli); ?></td>
                 </tr>
             
                 <?php 
@@ -33,9 +33,9 @@
         </tr>
         <tr>
             <td class="text-uppercase text-center" colspan="4"></td>
-            <td class="text-right"><?php echo $controller->FormatNumber($isTotalHargaBeli,2) ?></td>
-            <td class="text-right"><?php echo $controller->FormatNumber($isTotalHargaJual,2) ?></td>
-            <td class="text-right"><?php echo $controller->FormatNumber($isTotalHargaJual - $isTotalHargaBeli,2) ?></td>
+            <td class="text-right"><?php echo $controller->FormatNumber($isTotalHargaBeli) ?></td>
+            <td class="text-right"><?php echo $controller->FormatNumber($isTotalHargaJual) ?></td>
+            <td class="text-right"><?php echo $controller->FormatNumber($isTotalHargaJual - $isTotalHargaBeli) ?></td>
         </tr>
     <?php
     }
