@@ -4,15 +4,15 @@
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
  <?php $this->load->view('_layout/_meta'); ?>
  <?php $this->load->view('_layout/_css'); ?>
- <form action="<?php echo base_url().'Datatransaksi/add_to_cart'?>" method="post">
+ <form action="<?php echo base_url().'Datatransaksi/add_to_cart_grosir'?>" method="post">
   <table>
     <tr>
       <th>Kode Barang</th>
     </tr>
     <tr>
-      <th><input type="text" name="kode_brg" id="kode_brg" onkeyup="cekbarang()" onchange="cekbarang()" class="form-control input-sm"></th>                     
+      <th><input type="text" name="kode_brg_grosir" id="kode_brg_grosir" onkeyup="cekbarang_grosir()" onchange="cekbarang_grosir()" class="form-control input-sm"></th>                     
     </tr>
-    <div id="detail_barang" style="position:absolute;">
+    <div id="detail_barang_grosir" style="position:absolute;">
     </div>
   </table>
 </form>
@@ -23,7 +23,6 @@
       <th>Nama Barang</th>
       <th style="text-align:center;">Satuan</th>
       <th style="text-align:center;">Harga(Rp)</th>
-      <th style="text-align:center;">Diskon(Rp)</th>
       <th style="text-align:center;">Qty</th>
       <th style="text-align:center;">Sub Total</th>
       <th style="width:100px;text-align:center;">Aksi</th>
@@ -41,7 +40,6 @@
        <td><?=$items['name'];?></td>
        <td style="text-align:center;"><?=$items['satuan'];?></td>
        <td style="text-align:right;"><?php echo number_format($items['amount']);?></td>
-       <td style="text-align:right;"><?php echo number_format($items['disc']);?></td>
        <td style="text-align:center;"><?php echo number_format($items['qty']);?></td>
        <td style="text-align:right;"><?php echo number_format($items['subtotal']);?></td>
 
@@ -52,7 +50,7 @@
    <?php endforeach; ?>
  </tbody>
 </table>
-<form action="<?php echo base_url().'Datatransaksi/simpan_penjualan'?>" method="post">
+<form action="<?php echo base_url().'Datatransaksi/simpan_penjualan_grosir'?>" method="post">
   <table>
     <tr>
       <td style="width:760px;" rowspan="2"><button type="submit" class="btn btn-info btn-lg"> Simpan</button></td>

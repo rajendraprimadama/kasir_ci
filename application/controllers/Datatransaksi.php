@@ -52,6 +52,16 @@ class Datatransaksi extends AUTH_Controller {
 		}
 	}
 
+	function get_barang_grosir(){
+		if('a' == 'a'){
+			$kobar=$this->input->post('kode_brg');
+			$x['brg']=$this->M_barang->get_barang($kobar);
+			$this->load->view('datatransaksi/v_detail_barang_grosir',$x);
+		}else{
+			echo "Halaman tidak ditemukan";
+		}
+	}
+
 	function add_to_cart(){
 			//break;
 		if('a' == 'a'){
@@ -61,7 +71,7 @@ class Datatransaksi extends AUTH_Controller {
 			$data = array(
 				'id'       => $i['id_brg'],
 				'name'     => $i['nama_brg'],
-				'satuan'   => 'PCS',
+				'satuan'   => $this->input->post('diskon'),
 				'harpok'   => $i['hrg_beli'],
 				'price'    => str_replace(",", "", $i['pcs_hrgjual_retail']),
 				'disc'     => $this->input->post('diskon'),
@@ -70,7 +80,31 @@ class Datatransaksi extends AUTH_Controller {
 			);
 			
 			$this->cart->insert($data);
-			redirect('datatransaksi');
+			$this->load->view('datatransaksi/v_isi');
+		}else{
+			echo "Halaman tidak ditemukan";
+		}
+	}
+
+	function add_to_cart_grosir(){
+			//break;
+		if('a' == 'a'){
+			$kobar=$this->input->post('kode_brg_grosir');
+			$produk=$this->M_barang->get_barang($kobar);
+			$i=$produk->row_array();
+			$data = array(
+				'id'       => $i['id_brg'],
+				'name'     => $i['nama_brg'],
+				'satuan'   => $this->input->post('satuan_grosir'),
+				'harpok'   => $i['hrg_beli'],
+				'price'    => str_replace(",", "", $i['pcs_hrgjual_grosir']),
+				'disc'     => $this->input->post('diskon'),
+				'qty'      => $this->input->post('qty_grosir'),
+				'amount'	  => str_replace(",", "", $this->input->post('harjul_grosir'))
+			);
+			
+			$this->cart->insert($data);
+			$this->load->view('datatransaksi/v_isi',$x);
 		}else{
 			echo "Halaman tidak ditemukan";
 		}
