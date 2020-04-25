@@ -5,29 +5,30 @@
         });
 
         $('.v_startdate').datepicker({
-            autoclose:true,
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             changeYear: true,
-            yearRange: "-100:+0",
-            endDate: new Date(),
+            yearRange: "-5:+1",
+            maxDate: new Date(),
             onClose: function () {
                 $('.v_enddate').prop('readonly', true);
                 $('.v_enddate').val(null);
                 var minDate = $(this).datepicker('getDate');
                 if (minDate) {
-                    minDate.setDate(minDate.getDate() + 1) + minDate.getFullYear();
+                    minDate.setDate(minDate.getDate()) + minDate.getFullYear();
                 }
-                $('.v_enddate').datepicker('option', 'startDate', minDate || 1);
+                $('.v_enddate').datepicker('option', 'minDate', minDate ||
+                    1);
 
                 $('.v_enddate').val(null);
             }
         });
 
         $('.v_enddate').datepicker({
-            autoclose:true,
+            dateFormat: 'dd-mm-yy',
             changeMonth: true,
             changeYear: true,
-            endDate: new Date(),
+            maxDate: new Date(),
             onClose: function () {
                 $('.v_startdate').datepicker('option', 'maxDate');
             }
