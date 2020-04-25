@@ -39,7 +39,9 @@
                   <th class="text-center">No Transaksi</th>
                   <th class="text-center">Tanggal</th>
                   <th class="text-center">Keterangan</th>
-                  <th class="text-center">Total Harga</th>
+                  <th class="text-center">Total Harga Beli</th>
+                  <th class="text-center">Total Harga Jual</th>
+                  <th class="text-center">Keuntungan</th>
               </tr>
           </thead>
           <tbody class="tbody-report">
@@ -54,4 +56,4 @@
 
 </div>
 
-<?php $this->load->view('datareport/penjualan/plugin'); ?>
+<?php $this->load->view('datareport/keuntungan/plugin'); ?>
