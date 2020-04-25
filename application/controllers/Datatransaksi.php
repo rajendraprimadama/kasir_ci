@@ -31,12 +31,14 @@ class Datatransaksi extends AUTH_Controller {
 
 	function remove(){
 		if('a' == 'a'){
-			$row_id=$this->uri->segment(3);
+			// $row_id=$this->uri->segment(3);
+			$row_id = $this->input->post('id');
 			$this->cart->update(array(
 				'rowid'      => $row_id,
 				'qty'     => 0
 			));
-			redirect('Datatransaksi');
+			// redirect('Datatransaksi');
+			$this->load->view('datatransaksi/v_isi');
 		}else{
 			echo "Halaman tidak ditemukan";
 		}
@@ -46,7 +48,6 @@ class Datatransaksi extends AUTH_Controller {
 		if('a' == 'a'){
 			$kobar=$this->input->post('kode_brg');
 			$x['brg']=$this->M_barang->get_barang($kobar);
-			var_dump($x['brg']);
 			$this->load->view('datatransaksi/v_detail_barang',$x);
 		}else{
 			echo "Halaman tidak ditemukan";

@@ -86,12 +86,7 @@
 										url : "<?php echo base_url().'Datatransaksi/add_to_cart';?>",
 										data: kobar,
 										success: function(msg){
-											$('#isi_belanjaan').html(msg);
-											var totals2 = document.getElementById("total2").value;
-											var totals = document.getElementById("total").value;
-											totals2 = total2;
-											totals = total;
-											document.getElementById("kode_brg").focus();
+											$('.content-list-barang').empty().html(msg);
 										}
 									});
 								}
