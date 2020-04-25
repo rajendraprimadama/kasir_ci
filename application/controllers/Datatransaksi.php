@@ -46,6 +46,7 @@ class Datatransaksi extends AUTH_Controller {
 		if('a' == 'a'){
 			$kobar=$this->input->post('kode_brg');
 			$x['brg']=$this->M_barang->get_barang($kobar);
+			var_dump($x['brg']);
 			$this->load->view('datatransaksi/v_detail_barang',$x);
 		}else{
 			echo "Halaman tidak ditemukan";

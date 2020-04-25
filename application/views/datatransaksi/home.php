@@ -24,7 +24,7 @@
                         <th>Kode Barang</th>
                       </tr>
                       <tr>
-                        <th><input type="text" name="kode_brg" id="kode_brg" onkeyup="cekbarang()" onchange="cekbarang()" class="form-control input-sm"></th>                     
+                        <th><input type="text" name="kode_brg" id="kode_brg" onkeyup="cekbarang()" onchange="cekbarang()" class="form-control input-sm keyFontUp"></th>                     
                       </tr>
                       <div id="detail_barang" style="position:absolute;">
                       </div>
@@ -105,7 +105,7 @@
 
       function cekbarang() {
         var kode_brg = document.getElementById("kode_brg").value;
-        if (kode_brg.length == 5) {
+        if (kode_brg.length == 8) {
           var kobar = {kode_brg};
           $.ajax({
            type: "POST",
