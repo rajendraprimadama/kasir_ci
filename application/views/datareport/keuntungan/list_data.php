@@ -1,5 +1,7 @@
 <?php
     $no = 1;
+    $isTotalHargaBeli = 0;
+    $isTotalHargaJual = 0;
     if(count($datatable)*1>0){
         foreach ($datatable as $key => $val) {
             ?>

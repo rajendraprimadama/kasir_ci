@@ -106,7 +106,6 @@
                             window.open("<?php echo base_url(); ?>Datareport/exportExcelPenjualan/"+data.startdate+"/"+data.enddate, '_blank');
                         })
                     }
-                    
                     break;
 
                 default:
