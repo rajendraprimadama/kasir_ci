@@ -31,8 +31,9 @@
   <hr style="margin-top:0px">
 
   <!-- /.box-header -->
-  <div class="box-body">
-    <div class="table-responsive bg-white mb-3 " style="height:350px; overflow-y: scroll;">
+  <div class="box-body" id="page-all-print">
+    <!-- <div class="table-responsive bg-white mb-3 " style="height:350px; overflow-y: scroll;"> -->
+    <div class="table-responsive bg-white mb-3 ">
       <table class="table table-bordered table-xs table-striped table-hover table-data" >
           <thead class="text-uppercase">
               <tr>

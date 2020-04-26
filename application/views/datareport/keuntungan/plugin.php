@@ -68,6 +68,11 @@
                     break;
 
                 case 'print':
+                    var printContents = document.getElementById('page-all-print').innerHTML;
+                    var originalContents = document.body.innerHTML;
+                    document.body.innerHTML = printContents;
+                    window.print();
+                    document.body.innerHTML = originalContents;
                     break;
 
                 default:
