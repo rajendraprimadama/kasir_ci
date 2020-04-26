@@ -1,3 +1,4 @@
+
 <div class="box" style="margin-bottom:5px !important">
   <div class="box-header" style="padding-bottom:1px">
     <div class="row">
@@ -31,7 +32,7 @@
   <hr style="margin-top:0px">
 
   <!-- /.box-header -->
-  <div class="box-body">
+  <div class="box-body" id="page-all-print">
     <div class="table-responsive bg-white mb-3 " style="height:350px; overflow-y: scroll;">
       <table class="table table-bordered table-xs table-striped table-hover table-data" >
           <thead class="text-uppercase">

@@ -32,7 +32,7 @@ class Datareport extends AUTH_Controller {
         $data['userdata'] 	= $this->userdata;
         
 		$data['page'] 		= "Datareport/keuntungan";
-		$data['judul'] 		= "Data Report Penjualan";
+		$data['judul'] 		= "Data Report Keuntungan";
         $data['deskripsi'] 	= "";
 
 		$this->template->views('datareport/keuntungan/home', $data);
