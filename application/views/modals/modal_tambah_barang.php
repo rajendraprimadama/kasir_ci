@@ -9,6 +9,13 @@
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="input-group form-group">
           <span class="input-group-addon" id="sizing-addon2">
+            <i class="glyphicon glyphicon-barcode"></i>
+          </span>
+          <input type="text" class="form-control v_barcode" placeholder="Barcode" name="v_barcode" aria-describedby="sizing-addon2" autofocus>
+        </div>
+
+        <div class="input-group form-group">
+          <span class="input-group-addon" id="sizing-addon2">
             <i class="glyphicon glyphicon-folder-close"></i>
           </span>
           <input type="text" class="form-control keyFontUp" placeholder="Nama Barang" name="v_namabrg" aria-describedby="sizing-addon2">
