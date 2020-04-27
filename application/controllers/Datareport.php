@@ -342,7 +342,7 @@ class Datareport extends AUTH_Controller {
 		$result = $this->M_report->getDetailTransaksi($param);
 
 		$data['page'] 		= "Datareport/transaksi";
-		$data['judul'] 		= "Data Detail Transaksi";
+		$data['judul'] 		= "Detail Transaksi";
 		$data['deskripsi'] 	= "";
 		$data['userdata'] 	= $this->userdata;
 		

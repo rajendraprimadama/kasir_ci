@@ -71,7 +71,7 @@
         </a>
       </li>
 
-      <li class="treeview <?php if ($page == 'Datareport/penjualan' || $page == 'Datareport/keuntungan') {echo 'active';} ?>">
+      <li class="treeview <?php if ($page == 'Datareport/penjualan' || $page == 'Datareport/keuntungan' || $page=='Datareport/transaksi') {echo 'active';} ?>">
           <a href="#">
             <i class="fa fa-bar-chart"></i>
             <span>Laporan</span>
