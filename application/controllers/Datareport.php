@@ -22,7 +22,7 @@ class Datareport extends AUTH_Controller {
 		$param 	= $this->input->post();
 		$result = $this->M_report->getDataPenjualan($param);
 
-		$data['controller'] = $this;;
+		$data['controller'] = $this;
 		$data['datatable'] = $result;
 		return $this->load->view('datareport/penjualan/list_data', $data);
 	}
@@ -334,6 +334,21 @@ class Datareport extends AUTH_Controller {
 
 		$write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
 		$write->save('php://output');;
+	}
+
+	# region general
+	public function detailTransaksi() {
+		$param = $this->uri->segment(3);
+		$result = $this->M_report->getDetailTransaksi($param);
+
+		$data['page'] 		= "Datareport/transaksi";
+		$data['judul'] 		= "Data Detail Transaksi";
+		$data['deskripsi'] 	= "";
+		$data['userdata'] 	= $this->userdata;
+		
+		$data['controller'] = $this;;
+		$data['datatable'] = $result;
+		$this->template->views('datareport/detail_transaksi', $data);
 	}
 
 	public function FormatNumber($nilai,$decimal=0,$point=".",$thousands=",", $type_data=""){
