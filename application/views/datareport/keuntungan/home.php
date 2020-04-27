@@ -22,7 +22,11 @@
       </div>
       <div class="col-md-4 text-right">
         <button class="btn btn-primary btn-action" data-action="search" style="margin-right: 5px" ><i class="glyphicon glyphicon-plus-sign"></i> Search</button>
+<<<<<<< HEAD
         <button class="btn btn-warning btn-action" data-action="export" style="margin-right: 5px"><i class="glyphicon glyphicon-export"></i> Export</button>
+=======
+        <button class="btn btn-warning btn-action" data-action="export" target="_blank" style="margin-right: 5px"><i class="glyphicon glyphicon-export"></i> Export</button>
+>>>>>>> e028e507bf6ebc909ff7a577017c4df7014c3d5b
         <button class="btn btn-danger btn-action" data-action="print"><i class="glyphicon glyphicon-print"></i> Print</button>
       </div>
     </div>
@@ -31,8 +35,14 @@
   <hr style="margin-top:0px">
 
   <!-- /.box-header -->
+<<<<<<< HEAD
   <div class="box-body">
     <div class="table-responsive bg-white mb-3 " style="height:350px; overflow-y: scroll;">
+=======
+  <div class="box-body" id="page-all-print">
+    <!-- <div class="table-responsive bg-white mb-3 " style="height:350px; overflow-y: scroll;"> -->
+    <div class="table-responsive bg-white mb-3 ">
+>>>>>>> e028e507bf6ebc909ff7a577017c4df7014c3d5b
       <table class="table table-bordered table-xs table-striped table-hover table-data" >
           <thead class="text-uppercase">
               <tr>

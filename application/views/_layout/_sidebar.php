@@ -71,10 +71,14 @@
         </a>
       </li>
 
+<<<<<<< HEAD
       <li class="treeview <?php if ($page == 'Datareport/penjualan' || $page == 'Datareport/keuntungan') {echo 'active';} ?>">
+=======
+      <li class="treeview <?php if ($page == 'Datareport/penjualan' || $page == 'Datareport/keuntungan' || $page=='Datareport/transaksi') {echo 'active';} ?>">
+>>>>>>> e028e507bf6ebc909ff7a577017c4df7014c3d5b
           <a href="#">
-            <i class="fa fa-laptop"></i>
-            <span>Report</span>
+            <i class="fa fa-bar-chart"></i>
+            <span>Laporan</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
