@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Print Tambah Transaksi</title>
+    <title>Print Nota</title>
     
     <style>
         .invoice-box {
@@ -107,7 +107,7 @@
                     <table>
                         <tr>
                             <td class="title">
-                                <h3 style="width:100%; max-width:300px; size: 30px" >Pengepul</h3>
+                                <h3 style="width:100%; max-width:300px; size: 30px" >Penjualan</h3>
                                 <!-- <img src="https://www.sparksuite.com/images/logo.png" style="width:100%; max-width:300px;"> -->
                             </td>
                             
@@ -118,8 +118,8 @@
                                 $options = "";
                                 foreach ($datatransaksi as $key => $value) {
                                     ?>
-                                    <?php echo "nota #".$value->nota."<br>"?>
-                                    <?php echo $value->nama;?>
+                                    <?php echo "No nota ".$key->jual_nofak."<br>"?>
+                                    <?php echo "Kasir ".$key->jual_user_id;?>
                                     <?php
                                 }
                                 ?>
@@ -132,15 +132,18 @@
 
             <tr class="heading">
                 <td>
-                    Jenis Pertanian
+
                 </td>
 
                 <td>
-                    Berat (Kg)
+
                 </td>
 
                 <td>
-                    Harga Satuan
+
+                </td>
+                <td>
+
                 </td>
             </tr>
 
@@ -148,9 +151,9 @@
              <?php
              foreach ($datatransaksi as $dtransaksi) {
               ?>
-              <td><?php echo $dtransaksi->jenis; ?></td>
-              <td ><?php echo $dtransaksi->setor; ?></td>
-              <td ><?php echo "Rp " . number_format($dtransaksi->hargaperkg, 0, ",", "."); ?></td>
+              <td><?php echo $dtransaksi->nama; ?></td>
+              <td ><?php echo $dtransaksi->qty; ?></td>
+              <td ><?php echo "Rp " . number_format($dtransaksi->harjul, 0, ",", "."); ?></td>
               <?php
           }
           ?>
@@ -158,25 +161,28 @@
 
       <tr class="heading">
         <td>
-            Utang Piutang
+
         </td>
 
         <td>
 
         </td>
         <td>
-            Total
+
         </td>
     </tr>
 
     <tr class="item">
         <td>
-            Total Biaya
+            Total Item
         </td>
-
-        <td>
-
-        </td>
+        <?php
+        foreach ($datatransaksi as $dtransaksi) {
+            ?>
+            <td><?php echo $dtransaksi->qty; ?></td>
+            <?php
+        }
+        ?>
         <?php
         foreach ($datatransaksi as $dtransaksi) {
           ?>
@@ -185,10 +191,9 @@
       }
       ?>
   </tr>
-
   <tr class="item">
     <td>
-        Sudah dibayar
+        Tunai
     </td>
 
     <td>
@@ -197,23 +202,29 @@
     <?php
     foreach ($datatransaksi as $dtransaksi) {
       ?>
-      <td><?php echo "Rp " . number_format(((int)$dtransaksi->total-(int)$dtransaksi->tagihan), 0, ",", ".");?></td>
+      <td><?php echo "Rp " . number_format($dtransaksi->bayar, 0, ",", ".");?></td>
       <?php
   }
   ?>
 </tr>
 
-<tr class="total">
-    <td></td>
-    <td></td>
+<tr class="item">
+    <td>
+       Kembalian
+    </td>
+
+    <td>
+
+    </td> 
     <?php
     foreach ($datatransaksi as $dtransaksi) {
       ?>
-      <td>Sisa hutang : <?php echo "Rp " . number_format($dtransaksi->tagihan, 0, ",", "."); ?></td>
+      <td><?php echo "Rp " . number_format(((int)$dtransaksi->bayar-(int)$dtransaksi->total), 0, ",", ".");?></td>
       <?php
   }
   ?>
 </tr>
+
 </table>
 </div>
 </body>

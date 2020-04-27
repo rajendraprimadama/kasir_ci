@@ -17,7 +17,7 @@ class M_penjualan extends CI_Model{
 	}
 
 	function simpan_penjualan($nofak,$total,$jml_uang,$kembalian){
-		$idadmin=$this->session->userdata('idadmin');
+		$idadmin=$this->session->userdata('userdata')->username;
 		$this->db->query("INSERT INTO data_jual (jual_nofak,jual_total,jual_jml_uang,jual_kembalian,jual_user_id,jual_keterangan) VALUES ('$nofak','$total','$jml_uang','$kembalian','$idadmin','eceran')");
 		foreach ($this->cart->contents() as $item) {
 			$data=array(
@@ -38,21 +38,40 @@ class M_penjualan extends CI_Model{
 	}
 	function get_nofak(){
 		$q = $this->db->query("SELECT MAX(RIGHT(jual_nofak,6)) AS kd_max FROM data_jual WHERE DATE(jual_tanggal)=CURDATE()");
-        $kd = "";
-        if($q->num_rows()>0){
-            foreach($q->result() as $k){
-                $tmp = ((int)$k->kd_max)+1;
-                $kd = sprintf("%06s", $tmp);
-            }
-        }else{
-            $kd = "000001";
-        }
-        return date('dmy').$kd;
+		$kd = "";
+		if($q->num_rows()>0){
+			foreach($q->result() as $k){
+				$tmp = ((int)$k->kd_max)+1;
+				$kd = sprintf("%06s", $tmp);
+			}
+		}else{
+			$kd = "000001";
+		}
+		return date('dmy').$kd;
+	}
+
+	function select_nota($nofak) {
+		$sql = " SELECT 
+		data_jual.jual_nofak AS id,
+		data_detail_jual.d_jual_barang_nama AS nama, 
+		data_detail_jual.d_jual_barang_satuan AS satuan,
+		data_jual.jual_tanggal AS tanggal, 
+		data_jual.jual_total AS total, 
+		data_jual.jual_jml_uang AS bayar, 
+		data_jual.jual_kembalian AS kembalian, 
+		data_jual.jual_user_id AS user,
+		data_detail_jual.d_jual_qty AS qty,
+		data_detail_jual.d_jual_barang_harjul AS harjul
+		FROM data_jual, data_detail_jual 
+		WHERE data_jual.jual_nofak = data_detail_jual.d_jual_nofak and data_jual.jual_nofak='$nofak' LIMIT 1";
+		
+		$data = $this->db->query($sql);
+		return $data->result();
 	}
 
 	//=====================Penjualan grosir================================
 	function simpan_penjualan_grosir($nofak,$total,$jml_uang,$kembalian){
-		$idadmin=$this->session->userdata('idadmin');
+		$idadmin=$this->session->userdata('userdata')->username;
 		$this->db->query("INSERT INTO data_jual (jual_nofak,jual_total,jual_jml_uang,jual_kembalian,jual_user_id,jual_keterangan) VALUES ('$nofak','$total','$jml_uang','$kembalian','$idadmin','grosir')");
 		foreach ($this->cart->contents() as $item) {
 			$data=array(

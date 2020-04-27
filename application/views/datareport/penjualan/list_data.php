@@ -5,14 +5,23 @@
             ?>
                 <tr>
                     <td class="text-center"><?php echo $no; ?></td>
-                    <td class="text-center"><?php echo $val->jual_nofak; ?></td>
-                    <td class="text-center"><?php echo date('d M Y',strtotime($val->jual_tanggal)); ?></td>
-                    <td class="text-right"><?php echo $val->jual_total; ?></td>
-                    <td class="text-center text-uppercase"><?php echo $val->jual_keterangan; ?></td>
+                    <td class="text-center"><?php echo $val->NO_Transaksi; ?></td>
+                    <td class="text-center"><?php echo date('d M Y',strtotime($val->DATE)); ?></td>
+                    <td class="text-center text-uppercase"><?php echo $val->Keterangan; ?></td>
+                    <td class="text-right"><?php echo $controller->FormatNumber($val->Total_HargaJual); ?></td>
                 </tr>
             
-            <?php $no++;
+            <?php 
+                $isTotalHargaJual += $val->Total_HargaJual;
+                $no++;
         }
+        ?>
+
+        <tr>
+            <td class="text-uppercase text-right" colspan="4"><strong>total</strong></td>
+            <td class="text-uppercase text-right"><?php echo $controller->FormatNumber($isTotalHargaJual) ?></td>
+        </tr>
+    <?php
     }
     else{
         ?>

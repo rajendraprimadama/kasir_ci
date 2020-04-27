@@ -38,7 +38,7 @@
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="tab_2">
-               <?php $this->load->view('datatransaksi/v_transaksi_grosir'); ?>
+               <?php $this->load->view('datatransaksigrosir/home'); ?>
              </div>
 
              <!-- /.tab-pane -->
@@ -73,7 +73,7 @@
 
       function cekbarang() {
         var kode_brg = document.getElementById("kode_brg").value;
-        if (kode_brg.length == 8) {
+        if (kode_brg.length == 5) {
           var kobar = {kode_brg};
           $.ajax({
            type: "POST",
@@ -94,7 +94,7 @@
           var kobar = {kode_brg};
           $.ajax({
            type: "POST",
-           url : "<?php echo base_url().'Datatransaksi/get_barang_grosir';?>",
+           url : "<?php echo base_url().'Datatransaksigrosir/get_barang_grosir';?>",
            data: kobar,
            success: function(msg){
              $('#detail_barang_grosir').html(msg);
@@ -105,19 +105,5 @@
 
       }
 
-      
-
-    </script>
-    <script type="text/javascript">
-      $(function(){
-        $('#jml_uang').on("input",function(){
-          var total=$('#total').val();
-          var jumuang=$('#jml_uang').val();
-          var hsl=jumuang.replace(/[^\d]/g,"");
-          $('#jml_uang2').val(hsl);
-          $('#kembalian').val(FormatNumber(hsl-total));
-        })
-
-      });
     </script>
     <?php $this->load->view('_layout/_js'); ?>
