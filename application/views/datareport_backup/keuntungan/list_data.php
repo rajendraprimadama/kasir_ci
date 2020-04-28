@@ -1,15 +1,11 @@
 <?php
     $no = 1;
-    $isTotalHargaBeli = 0;
-    $isTotalHargaJual = 0;
     if(count($datatable)*1>0){
         foreach ($datatable as $key => $val) {
             ?>
                 <tr>
                     <td class="text-center"><?php echo $no; ?></td>
-                    <td class="text-center">
-                        <a href="<?php echo base_url().'Datareport/detailTransaksi/'.$val->NO_Transaksi; ?>"><?php echo $val->NO_Transaksi; ?></a>
-                    </td>
+                    <td class="text-center"><?php echo $val->NO_Transaksi; ?></td>
                     <td class="text-center"><?php echo date('d M Y',strtotime($val->DATE)); ?></td>
                     <td class="text-center text-uppercase"><?php echo $val->Keterangan; ?></td>
                     <td class="text-right"><?php echo $controller->FormatNumber($val->Total_HargaBeli); ?></td>

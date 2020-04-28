@@ -5,30 +5,29 @@
         });
 
         $('.v_startdate').datepicker({
-            dateFormat: 'dd-mm-yy',
+            autoclose:true,
             changeMonth: true,
             changeYear: true,
-            yearRange: "-5:+1",
-            maxDate: new Date(),
+            yearRange: "-100:+0",
+            endDate: new Date(),
             onClose: function () {
                 $('.v_enddate').prop('readonly', true);
                 $('.v_enddate').val(null);
                 var minDate = $(this).datepicker('getDate');
                 if (minDate) {
-                    minDate.setDate(minDate.getDate()) + minDate.getFullYear();
+                    minDate.setDate(minDate.getDate() + 1) + minDate.getFullYear();
                 }
-                $('.v_enddate').datepicker('option', 'minDate', minDate ||
-                    1);
+                $('.v_enddate').datepicker('option', 'startDate', minDate || 1);
 
                 $('.v_enddate').val(null);
             }
         });
 
         $('.v_enddate').datepicker({
-            dateFormat: 'dd-mm-yy',
+            autoclose:true,
             changeMonth: true,
             changeYear: true,
-            maxDate: new Date(),
+            endDate: new Date(),
             onClose: function () {
                 $('.v_startdate').datepicker('option', 'maxDate');
             }
@@ -68,44 +67,6 @@
                     break;
 
                 case 'print':
-                    var printContents = document.getElementById('page-all-print').innerHTML;
-                    var originalContents = document.body.innerHTML;
-                    document.body.innerHTML = printContents;
-                    window.print();
-                    document.body.innerHTML = originalContents;
-                    break;
-
-                case 'export':
-                    if($('input[name=v_stardate]').val().length==0) {
-                        myAlert('error', 'PILIH TANGGAL AWAL')
-                    }
-                    else if($('input[name=v_enddate]').val().length==0){
-                        myAlert('error', 'PILIH TANGGAL AKHIR')
-                    }
-                    else{
-                        var data = {
-                            startdate: $('input[name=v_stardate]').val(),
-                            enddate: $('input[name=v_enddate]').val()
-                        }
-
-                        $.ajax({
-                            method: "POST",
-                            url: "<?php echo base_url('Datareport/exportExcelKeuntungan'); ?>",
-                            data: data,
-                            beforeSend: function(){
-                                myLoad('start','.box-body');
-                            }
-                        })
-                        .done(function(data) {
-                            myLoad('end','.box-body');
-                            var data = {
-                                startdate: $('input[name=v_stardate]').val(),
-                                enddate: $('input[name=v_enddate]').val()
-                            }
-
-                            window.open("<?php echo base_url(); ?>Datareport/exportExcelKeuntungan/"+data.startdate+"/"+data.enddate, '_blank');
-                        })
-                    }
                     break;
 
                 default:

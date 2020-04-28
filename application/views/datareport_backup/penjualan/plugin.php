@@ -53,7 +53,7 @@
                         }
                         $.ajax({
                             method: "POST",
-                            url: "<?php echo base_url('Datareport/getDataKeuntungan'); ?>",
+                            url: "<?php echo base_url('Datareport/getDataPenjualan'); ?>",
                             data: data,
                             beforeSend: function(){
                                 myLoad('start','.box-body');
@@ -90,7 +90,7 @@
 
                         $.ajax({
                             method: "POST",
-                            url: "<?php echo base_url('Datareport/exportExcelKeuntungan'); ?>",
+                            url: "<?php echo base_url('Datareport/exportExcelPenjualan'); ?>",
                             data: data,
                             beforeSend: function(){
                                 myLoad('start','.box-body');
@@ -103,7 +103,7 @@
                                 enddate: $('input[name=v_enddate]').val()
                             }
 
-                            window.open("<?php echo base_url(); ?>Datareport/exportExcelKeuntungan/"+data.startdate+"/"+data.enddate, '_blank');
+                            window.open("<?php echo base_url(); ?>Datareport/exportExcelPenjualan/"+data.startdate+"/"+data.enddate, '_blank');
                         })
                     }
                     break;
