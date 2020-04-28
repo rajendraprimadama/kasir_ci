@@ -1,6 +1,6 @@
 <?php $i = 1; ?>
-    <table class="table table-bordered table-condensed" style="font-size:11px;margin-top:10px;">
-        <thead>
+<table class="table table-bordered table-condensed" style="font-size:11px;margin-top:10px;">
+    <thead>
         <tr>
             <th>Kode Barang</th>
             <th>Nama Barang</th>
@@ -10,8 +10,8 @@
             <th style="text-align:center;">Sub Total</th>
             <th style="width:100px;text-align:center;">Aksi</th>
         </tr>
-        </thead>
-        <tbody>
+    </thead>
+    <tbody>
 
         <?php foreach ($this->cart->contents() as $items): ?>
             <?php echo form_hidden($i.'[rowid]', $items['rowid']); ?>
@@ -30,42 +30,42 @@
             </tr>
             <?php $i++; ?>
         <?php endforeach; ?>
-        </tbody>
-    </table>
+    </tbody>
+</table>
 
-    <form action="<?php echo base_url().'Datatransaksi/simpan_penjualan'?>" method="post">
-        <table>
+<form action="<?php echo base_url().'Datatransaksigrosir/simpan_penjualan'?>" method="post">
+    <table>
         <tr>
             <td style="width:760px;" rowspan="2"><button type="submit" class="btn btn-info btn-lg"> Simpan</button></td>
             <th style="width:140px;">Total Belanja(Rp)</th>
-            <th style="text-align:right;width:140px;"><input type="text" name="total2" id="total2" value="<?php echo number_format($this->cart->total());?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly></th>
-            <input type="hidden" id="total" name="total" value="<?php echo $this->cart->total();?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
+            <th style="text-align:right;width:140px;"><input type="text" name="total2_grosir" id="total2_grosir" value="<?php echo number_format($this->cart->total());?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly></th>
+            <input type="hidden" id="total_grosir" name="total_grosir" value="<?php echo $this->cart->total();?>" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" readonly>
         </tr>
         <tr>
             <th>Tunai(Rp)</th>
-            <th style="text-align:right;"><input type="text" id="jml_uang" name="jml_uang" class="jml_uang form-control input-sm FormatKey" style="text-align:right;margin-bottom:5px;" required></th>
-            <input type="hidden" id="jml_uang2" name="jml_uang2" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
+            <th style="text-align:right;"><input type="text" id="jml_uang_grosir" name="jml_uang_grosir" class="jml_uang form-control input-sm FormatKey" style="text-align:right;margin-bottom:5px;" required></th>
+            <input type="hidden" id="jml_uang2_grosir" name="jml_uang2_grosir" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required>
         </tr>
         <tr>
             <td></td>
             <th>Kembalian(Rp)</th>
-            <th style="text-align:right;"><input type="text" id="kembalian" name="kembalian" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
+            <th style="text-align:right;"><input type="text" id="kembalian_grosir" name="kembalian_grosir" class="form-control input-sm" style="text-align:right;margin-bottom:5px;" required></th>
         </tr>
 
-        </table>
-    </form>
+    </table>
+</form>
 
 <script type="text/javascript">
     $(document).ready(function(){
         $(document).on('click', '.btn-remove-barang', function(event){
             deleteRowBarang(this);
-            document.getElementById("kode_brg").focus();
+            document.getElementById("kode_brg_grosir").focus();
         });
 
         $("#halaman").keypress(function(e){
-          if (e.which == 68 && $("#tab1").hasClass('active')) 
+          if (e.which == 68 && $("#tab2").hasClass('active')) 
           {
-            document.getElementById("jml_uang").focus();
+            document.getElementById("jml_uang_grosir").focus();
           }
       });
     });
@@ -74,23 +74,23 @@
         let data = {id: $(param).attr('data-index')}
         $.ajax({
             method: "POST",
-            url: "<?php echo base_url('Datatransaksi/remove'); ?>",
+            url: "<?php echo base_url('Datatransaksigrosir/remove'); ?>",
             data: data
         })
         .done(function(data) {
-            $('.content-list-barang').empty().html(data);
+            $('.content-list-barang-grosir').empty().html(data);
         })
     }
 </script>
-    <script type="text/javascript">
-      $(function(){
-        $('#jml_uang').on("input",function(){
-          var total=$('#total').val();
-          var jumuang=$('#jml_uang').val();
-          var hsl=jumuang.replace(/[^\d]/g,"");
-          $('#jml_uang2').val(hsl);
-          $('#kembalian').val(FormatNumber(hsl-total));
-        })
+<script type="text/javascript">
+  $(function(){
+    $('#jml_uang_grosir').on("input",function(){
+      var total=$('#total_grosir').val();
+      var jumuang=$('#jml_uang_grosir').val();
+      var hsl=jumuang.replace(/[^\d]/g,"");
+      $('#jml_uang2_grosir').val(hsl);
+      $('#kembalian_grosir').val(FormatNumber(hsl-total));
+  })
 
-      });
-    </script>
+});
+</script>

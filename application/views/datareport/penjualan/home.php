@@ -23,8 +23,13 @@
       </div>
       <div class="col-md-4 text-right">
         <button class="btn btn-primary btn-action" data-action="search" style="margin-right: 5px" ><i class="glyphicon glyphicon-plus-sign"></i> Search</button>
+<<<<<<< HEAD
+        <button class="btn btn-warning btn-action" data-action="export" style="margin-right: 5px"><i class="glyphicon glyphicon-export"></i> Export</button>
+        <button class="btn btn-danger btn-action" data-action="print"><i class="glyphicon glyphicon-print"></i> Print</button>
+=======
         <button class="btn btn-warning btn-action" data-action="export" target="_blank" style="margin-right: 5px"><i class="glyphicon glyphicon-export"></i> Export</button>
         <button class="btn btn-danger btn-action" data-action="print" ><i class="glyphicon glyphicon-print"></i> Print</button>
+>>>>>>> e028e507bf6ebc909ff7a577017c4df7014c3d5b
       </div>
     </div>
   </div>

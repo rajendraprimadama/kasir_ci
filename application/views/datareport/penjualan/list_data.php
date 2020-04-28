@@ -6,9 +6,13 @@
             ?>
                 <tr>
                     <td class="text-center"><?php echo $no; ?></td>
+<<<<<<< HEAD
+                    <td class="text-center"><?php echo $val->NO_Transaksi; ?></td>
+=======
                     <td class="text-center">
                         <a href="<?php echo base_url().'Datareport/detailTransaksi/'.$val->NO_Transaksi; ?>"><?php echo $val->NO_Transaksi; ?></a>
                     </td>
+>>>>>>> e028e507bf6ebc909ff7a577017c4df7014c3d5b
                     <td class="text-center"><?php echo date('d M Y',strtotime($val->DATE)); ?></td>
                     <td class="text-center text-uppercase"><?php echo $val->Keterangan; ?></td>
                     <td class="text-right"><?php echo $controller->FormatNumber($val->Total_HargaJual); ?></td>
