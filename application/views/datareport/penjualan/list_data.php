@@ -6,9 +6,7 @@
             ?>
                 <tr>
                     <td class="text-center"><?php echo $no; ?></td>
-<<<<<<< HEAD
-                    <td class="text-center"><?php echo $val->NO_Transaksi; ?></td>
-=======
+
                     <td class="text-center">
                         <a href="<?php echo base_url().'Datareport/detailTransaksi/'.$val->NO_Transaksi; ?>"><?php echo $val->NO_Transaksi; ?></a>
                     </td>
