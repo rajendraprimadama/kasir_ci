@@ -16,6 +16,6 @@
 
 <!-- My Ajax -->
 <?php 
-    //include './assets/js/ajax.php';
+    include './assets/js/ajax.php';
     include './assets/js/general.php';
 ?>
