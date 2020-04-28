@@ -11,7 +11,7 @@ foreach ($dataDtransaksi as $dtransaksi) {
     <td width="10%"><?php echo "Rp " . number_format(((int)$dtransaksi->total-(int)$dtransaksi->tagihan), 0, ",", ".");?></td> <!--PR-->
     <td width="10%"><?php echo "Rp " . number_format($dtransaksi->tagihan, 0, ",", "."); ?></td>
     <td width="10%"><?php echo $dtransaksi->status; ?></td>
-    <td class="text-center" style="width: 10%" ;">
+    <td class="text-center" style="width: 10%" ;>
       <?php
       if ($dtransaksi->tagihan == "0") {
         
