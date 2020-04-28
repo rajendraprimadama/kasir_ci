@@ -11,7 +11,7 @@
           <span class="input-group-addon" id="sizing-addon2">
             <i class="glyphicon glyphicon-barcode"></i>
           </span>
-          <input type="text" class="form-control v_barcode" placeholder="Barcode" name="v_barcode" aria-describedby="sizing-addon2" autofocus>
+          <input type="text" class="form-control v_barcode" placeholder="Barcode" name="v_barcode" id="v_barcode" aria-describedby="sizing-addon2" autofocus>
         </div>
 
         <div class="input-group form-group">
@@ -113,6 +113,7 @@
 <script type="text/javascript">
   $(document).ready(function(){
 
+    $("#v_barcode").focus();
     $(document).on('change', '.v_hrgbeli', function(event){
         event.preventDefault();
         var arrObj = [

@@ -52,7 +52,7 @@
 		if ($content != '') {
 			$view_content = $_ci->load->view($content, $data, TRUE);
 
-			return '<div class="modal fade" id="' .$id .'" role="dialog">
+			return '<div class="modal fade" id="' .$id .'" role="dialog" tabindex="-1" data-toggle="modal" data-backdrop="static" data-keyboard="false">
 					  <div class="modal-dialog modal-' .$size .'" role="document">
 					    <div class="modal-content">
 					        ' .$view_content .'

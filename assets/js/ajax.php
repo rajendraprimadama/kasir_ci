@@ -169,8 +169,12 @@
 	});
 
 	$('#tambah-barang').on('hidden.bs.modal', function () {
-	  $('.form-msg').html('');
+	  	$('.form-msg').html('');
 	})
+
+	$('#tambah-barang').on('shown.bs.modal', function() {
+		$(this).find('[autofocus]').focus();
+	});
 
 	$('#update-barang').on('hidden.bs.modal', function () {
 	  $('.form-msg').html('');
@@ -630,4 +634,11 @@
 			})
 		})
 	// endregion karyawan
+
+	$(window).keydown(function(event){
+		if(event.keyCode == 13) {
+			event.preventDefault();
+			return false;
+		}
+	});
 </script>
