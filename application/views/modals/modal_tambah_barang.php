@@ -113,7 +113,13 @@
 <script type="text/javascript">
   $(document).ready(function(){
 
-    $("#v_barcode").focus();
+    $(window).keydown(function(event){
+      if(event.keyCode == 13) {
+        event.preventDefault();
+        return false;
+      }
+    });
+
     $(document).on('change', '.v_hrgbeli', function(event){
         event.preventDefault();
         var arrObj = [
