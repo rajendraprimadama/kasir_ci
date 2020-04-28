@@ -6,12 +6,11 @@
     
     <style>
         .invoice-box {
-            max-width: 800px;
+            max-width: 300px;
             margin: auto;
-            padding: 30px;
             border: 1px solid #eee;
             box-shadow: 0 0 10px rgba(0, 0, 0, .15);
-            font-size: 16px;
+            font-size: 11px;
             line-height: 24px;
             font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
             color: #555;
@@ -37,7 +36,7 @@
         }
 
         .invoice-box table tr.top table td.title {
-            font-size: 45px;
+            font-size: 25px;
             line-height: 45px;
             color: #333;
         }
@@ -53,7 +52,7 @@
         }
 
         .invoice-box table tr.details td {
-            padding-bottom: 20px;
+            padding-bottom: 10px;
         }
 
         .invoice-box table tr.item td{
@@ -102,24 +101,26 @@
 <body onload="window.print()">
     <div class="invoice-box" >
         <table cellpadding="0" cellspacing="0">
-            <tr class="top" >
-                <td colspan="3">
+            <tr class="top">
+                <td colspan="2">
                     <table>
-                        <tr>
+                        <tr class="item">
                             <td class="title">
-                                <h3 style="width:100%; max-width:300px; size: 30px" >Penjualan</h3>
+                                Toko AAN<br/>Purbalingga
                                 <!-- <img src="https://www.sparksuite.com/images/logo.png" style="width:100%; max-width:300px;"> -->
                             </td>
                             
-                            <td>
+                            <td></td>
+                            
+                            <td style="">
                                 <?php 
                                 date_default_timezone_set('asia/jakarta');
                                 echo date("j M Y G:i:s")."<br>";
                                 $options = "";
                                 foreach ($datatransaksi as $key => $value) {
                                     ?>
-                                    <?php echo "No nota ".$key->jual_nofak."<br>"?>
-                                    <?php echo "Kasir ".$key->jual_user_id;?>
+                                    <?php echo "No nota ".$value->id."<br>";?>
+                                    <?php echo "Kasir ".$value->user;?>
                                     <?php
                                 }
                                 ?>
@@ -128,101 +129,71 @@
                     </table>
                 </td>
             </tr>
+            <hr/>
 
-
-            <tr class="heading">
-                <td>
-
-                </td>
-
-                <td>
-
-                </td>
-
-                <td>
-
-                </td>
-                <td>
-
-                </td>
-            </tr>
-
-            <tr class="details">
-             <?php
-             foreach ($datatransaksi as $dtransaksi) {
+            <tr class="details item">
+               <?php
+               foreach ($datatransaksi as $dtransaksi) {
+                  ?>
+                  <td style="max-width: 40px"><?php echo $dtransaksi->nama; ?></td>
+                  <td ><?php echo $dtransaksi->qty; ?></td>
+                  <td ><?php echo "Rp " . number_format($dtransaksi->harjul, 0, ",", "."); ?></td>
+                  <?php
+              }
               ?>
-              <td><?php echo $dtransaksi->nama; ?></td>
-              <td ><?php echo $dtransaksi->qty; ?></td>
-              <td ><?php echo "Rp " . number_format($dtransaksi->harjul, 0, ",", "."); ?></td>
+          </tr>
+
+          <tr class="item">
+            <td>
+                Total Item
+            </td>
+            <?php
+            foreach ($datatransaksi as $dtransaksi) {
+                ?>
+                <td><?php echo $dtransaksi->qty; ?></td>
+                <?php
+            }
+            ?>
+            <?php
+            foreach ($datatransaksi as $dtransaksi) {
+              ?>
+              <td><?php echo "Rp " . number_format($dtransaksi->total, 0, ",", "."); ?></td>
               <?php
           }
           ?>
       </tr>
-
-      <tr class="heading">
+      <tr class="item">
         <td>
-
+            Tunai
         </td>
 
         <td>
 
-        </td>
-        <td>
-
-        </td>
-    </tr>
-
-    <tr class="item">
-        <td>
-            Total Item
-        </td>
-        <?php
-        foreach ($datatransaksi as $dtransaksi) {
-            ?>
-            <td><?php echo $dtransaksi->qty; ?></td>
-            <?php
-        }
-        ?>
+        </td> 
         <?php
         foreach ($datatransaksi as $dtransaksi) {
           ?>
-          <td><?php echo "Rp " . number_format($dtransaksi->total, 0, ",", "."); ?></td>
+          <td><?php echo "Rp " . number_format($dtransaksi->bayar, 0, ",", ".");?></td>
           <?php
       }
       ?>
   </tr>
+
   <tr class="item">
     <td>
-        Tunai
-    </td>
+     Kembalian
+ </td>
 
-    <td>
+ <td>
 
-    </td> 
-    <?php
-    foreach ($datatransaksi as $dtransaksi) {
-      ?>
-      <td><?php echo "Rp " . number_format($dtransaksi->bayar, 0, ",", ".");?></td>
-      <?php
-  }
+ </td> 
+ <?php
+ foreach ($datatransaksi as $dtransaksi) {
   ?>
-</tr>
-
-<tr class="item">
-    <td>
-       Kembalian
-    </td>
-
-    <td>
-
-    </td> 
-    <?php
-    foreach ($datatransaksi as $dtransaksi) {
-      ?>
-      <td><?php echo "Rp " . number_format(((int)$dtransaksi->bayar-(int)$dtransaksi->total), 0, ",", ".");?></td>
-      <?php
-  }
-  ?>
+  <td><?php echo "Rp " . number_format(((int)$dtransaksi->bayar-(int)$dtransaksi->total), 0, ",", ".");?></td>
+  <?php
+}
+?>
 </tr>
 
 </table>
