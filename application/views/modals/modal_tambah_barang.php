@@ -1,6 +1,6 @@
 <div class="col-md-offset-1 col-md-10 col-md-offset-1 well">
   <div class="form-msg"></div>
-  <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <h3 style="display:block; text-align:center;">Tambah Data Barang</h3>
 
   <form id="form-tambah-barang" method="POST">
@@ -11,7 +11,7 @@
           <span class="input-group-addon" id="sizing-addon2">
             <i class="glyphicon glyphicon-barcode"></i>
           </span>
-          <input type="text" class="form-control v_barcode" placeholder="Barcode" name="v_barcode" aria-describedby="sizing-addon2" autofocus>
+          <input type="text" class="form-control v_barcode" placeholder="Barcode" name="v_barcode" id="v_barcode" aria-describedby="sizing-addon2" autofocus>
         </div>
 
         <div class="input-group form-group">
@@ -113,6 +113,7 @@
 <script type="text/javascript">
   $(document).ready(function(){
 
+    $("#v_barcode").focus();
     $(document).on('change', '.v_hrgbeli', function(event){
         event.preventDefault();
         var arrObj = [
