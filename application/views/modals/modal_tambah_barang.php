@@ -143,18 +143,16 @@
   })
 
   const CheckSell = (param) => {
-    let buy = $('input[name=v_hrgbeli]').val()
-    let sell = $(param).val()
+    let buy = parseFloat(reform($('input[name=v_hrgbeli]').val()))
+    let sell = parseFloat(reform($(param).val()))
     
     if (buy==0 || buy.length==0) {
       myAlert('error','Harga beli tidak boleh kosong atau 0')
-      // alert('Harga beli tidak boleh kosong atau 0')
       $(param).val('')
     }
     else {
       if (sell < buy) {
         myAlert('error','Harga jual tidak boleh lebih kecil dari harga beli')
-        // alert('Harga jual tidak boleh lebih kecil dari harga beli')
         $(param).val('')
       }
     }
