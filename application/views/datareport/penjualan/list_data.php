@@ -7,7 +7,7 @@
                 <tr>
                     <td class="text-center"><?php echo $no; ?></td>
                     <td class="text-center">
-                        <a href="<?php echo base_url().'Datareport/detailTransaksi/'.$val->NO_Transaksi; ?>"><?php echo $val->NO_Transaksi; ?></a>
+                        <a href="<?php echo base_url().'Datareport/detailTransaksi/'.$val->NO_Transaksi; ?>" target="_blank"><?php echo $val->NO_Transaksi; ?></a>
                     </td>
                     <td class="text-center"><?php echo date('d M Y',strtotime($val->DATE)); ?></td>
                     <td class="text-center text-uppercase"><?php echo $val->Keterangan; ?></td>
