@@ -59,9 +59,13 @@
                                 myLoad('start','.box-body');
                             }
                         })
-                        .done(function(data) {
+                        .done(function(respon) {
                             myLoad('end','.box-body');
-                            $('.tbody-report').empty().html(data)
+                            $('.tbody-report').empty().html(respon)
+
+                            $('.v_startdate_show').val(data.startdate)
+                            $('.v_enddate_show').val(data.enddate)
+                            $('.div-print-export').removeClass('hidden')
                         })
                     }
                     
@@ -76,36 +80,29 @@
                     break;
 
                 case 'export':
-                    if($('input[name=v_stardate]').val().length==0) {
-                        myAlert('error', 'PILIH TANGGAL AWAL')
+                    
+                    var data = {
+                        startdate: $('input[name=v_stardate]').val(),
+                        enddate: $('input[name=v_enddate]').val()
                     }
-                    else if($('input[name=v_enddate]').val().length==0){
-                        myAlert('error', 'PILIH TANGGAL AKHIR')
-                    }
-                    else{
+
+                    $.ajax({
+                        method: "POST",
+                        url: "<?php echo base_url('Datareport/exportExcelKeuntungan'); ?>",
+                        data: data,
+                        beforeSend: function(){
+                            myLoad('start','.box-body');
+                        }
+                    })
+                    .done(function(data) {
+                        myLoad('end','.box-body');
                         var data = {
                             startdate: $('input[name=v_stardate]').val(),
                             enddate: $('input[name=v_enddate]').val()
                         }
 
-                        $.ajax({
-                            method: "POST",
-                            url: "<?php echo base_url('Datareport/exportExcelKeuntungan'); ?>",
-                            data: data,
-                            beforeSend: function(){
-                                myLoad('start','.box-body');
-                            }
-                        })
-                        .done(function(data) {
-                            myLoad('end','.box-body');
-                            var data = {
-                                startdate: $('input[name=v_stardate]').val(),
-                                enddate: $('input[name=v_enddate]').val()
-                            }
-
-                            window.open("<?php echo base_url(); ?>Datareport/exportExcelKeuntungan/"+data.startdate+"/"+data.enddate, '_blank');
-                        })
-                    }
+                        window.open("<?php echo base_url(); ?>Datareport/exportExcelKeuntungan/"+data.startdate+"/"+data.enddate, '_blank');
+                    })
                     break;
 
                 default:
