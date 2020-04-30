@@ -276,4 +276,11 @@
             autoClose: true
         });
     }
+
+    function reform(val){
+        var a = val.split(",");
+        var b = a.join("");
+
+        return b;
+    }
 </script>
