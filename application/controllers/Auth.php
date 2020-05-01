@@ -36,7 +36,12 @@ class Auth extends CI_Controller {
 					'status' => "Loged in"
 				];
 				$this->session->set_userdata($session);
-				redirect('Databarang');
+
+				if($data->authority_level == "KASIR") {
+					redirect('Datatransaksi');
+				}else {
+					redirect('Databarang');
+				}
 			}
 		} else {
 			$this->session->set_flashdata('error_msg', validation_errors());
