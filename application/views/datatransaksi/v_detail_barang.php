@@ -1,18 +1,18 @@
 					<?php 
 					error_reporting(0);
 					$b=$brg->row_array();
-					?>
+					?> 
 					<table>
 						<tr>
 							<th style="width:200px;"></th>
-							<th>Nama Barang</th>
+							<th></th>
 							<th>Satuan</th>
 							<th>Harga(Rp)</th>
 							<th>Jumlah</th>
 						</tr>
 						<tr>
-							<td style="width:200px;"></th>
-								<td><input type="text" name="nabar" value="<?php echo $b['nama_brg'];?>" style="width:380px;margin-right:5px;" class="form-control input-sm" readonly></td>
+							<td style="width:200px;"></td>
+							<td style="width:380px;"></td>
 								<td><select class="form-control" name="satuan" id="satuan" placeholder="Satuan">
 									<option value="PCS">PCS</option>
 									<option value="PAX">PAX</option>
