@@ -30,9 +30,11 @@
                     <table>
                       <tr>
                         <th>Kode Barang</th>
+                        <th>Nama Barang</th>
                       </tr>
                       <tr>
-                        <th><input type="text" name="kode_brg" id="kode_brg" onkeyup="cekbarang()" onchange="cekbarang()" class="form-control input-sm fontKeyUp"></th>                     
+                        <th><input type="text" name="kode_brg" id="kode_brg" onkeyup="cekbarang()" onchange="cekbarang()" class="form-control input-sm fontKeyUp"></th>
+                        <th><input type="text" name="nabar" value="" style="width:380px;margin-right:5px;" class="form-control input-sm"></th>               
                       </tr>
                       <div id="detail_barang" style="position:absolute;">
                       </div>
