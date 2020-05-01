@@ -22,7 +22,7 @@ class M_penjualan extends CI_Model{
 		foreach ($this->cart->contents() as $item) {
 			$data=array(
 				'd_jual_nofak' 			=>	$nofak,
-				'd_jual_barang_id'		=>	$item['id'],
+				'd_jual_barang_id'		=>	substr($item['id'], 0, -3),
 				'd_jual_barang_nama'	=>	$item['name'],
 				'd_jual_barang_satuan'	=>	$item['satuan'],
 				'd_jual_barang_harpok'	=>	$item['harpok'],
@@ -63,7 +63,7 @@ class M_penjualan extends CI_Model{
 		data_detail_jual.d_jual_qty AS qty,
 		data_detail_jual.d_jual_barang_harjul AS harjul
 		FROM data_jual, data_detail_jual 
-		WHERE data_jual.jual_nofak = data_detail_jual.d_jual_nofak and data_jual.jual_nofak='$nofak' LIMIT 1";
+		WHERE data_jual.jual_nofak = data_detail_jual.d_jual_nofak and data_jual.jual_nofak='$nofak'";
 		
 		$data = $this->db->query($sql);
 		return $data->result();
@@ -91,8 +91,7 @@ class M_penjualan extends CI_Model{
 		return true;
 	}
 
-	function cetak_faktur(){
-		$nofak=$this->session->userdata('nofak');
+	function cetak_faktur($nofak){
 		$hsl=$this->db->query("SELECT jual_nofak,DATE_FORMAT(jual_tanggal,'%d/%m/%Y %H:%i:%s') AS jual_tanggal,jual_total,jual_jml_uang,jual_kembalian,jual_keterangan,d_jual_barang_nama,d_jual_barang_satuan,d_jual_barang_harjul,d_jual_qty,d_jual_diskon,d_jual_total FROM data_jual JOIN data_detail_jual ON jual_nofak=d_jual_nofak WHERE jual_nofak='$nofak'");
 		return $hsl;
 	}

@@ -35,7 +35,8 @@ class Datatransaksi extends AUTH_Controller {
 			$row_id = $this->input->post('id');
 			$this->cart->update(array(
 				'rowid'      => $row_id,
-				'qty'     => 0
+				'qty'     => 0,
+				'subtotal'  => 0
 			));
 			// redirect('Datatransaksi');
 			$this->load->view('datatransaksi/v_isi');
@@ -71,17 +72,18 @@ class Datatransaksi extends AUTH_Controller {
 			$produk=$this->M_barang->get_barang($kobar);
 			$i=$produk->row_array();
 			$data = array(
-				'id'       => $i['id_brg'],
+				'id'       => $i['id_brg'].$this->input->post('satuan'),
 				'name'     => $i['nama_brg'],
 				'satuan'   => $this->input->post('satuan'),
 				'harpok'   => $i['hrg_beli'],
-				'price'    => str_replace(",", "", $i['pcs_hrgjual_retail']),
+				'price'    => str_replace(",", "", $this->input->post('harjul')),
 				'disc'     => $this->input->post('diskon'),
 				'qty'      => $this->input->post('qty'),
 				'amount'	  => str_replace(",", "", $this->input->post('harjul'))
 			);
 			
 			$this->cart->insert($data);
+
 			$this->load->view('datatransaksi/v_isi');
 		}else{
 			echo "Halaman tidak ditemukan";
@@ -95,14 +97,14 @@ class Datatransaksi extends AUTH_Controller {
 			$produk=$this->M_barang->get_barang($kobar);
 			$i=$produk->row_array();
 			$data = array(
-				'id'       => $i['id_brg'],
+				'id'       => $i['id_brg'].$this->input->post('satuan'),
 				'name'     => $i['nama_brg'],
-				'satuan'   => $this->input->post('satuan_grosir'),
+				'satuan'   => $this->input->post('satuan'),
 				'harpok'   => $i['hrg_beli'],
-				'price'    => str_replace(",", "", $i['pcs_hrgjual_grosir']),
+				'price'    => str_replace(",", "", $this->input->post('harjul')),
 				'disc'     => $this->input->post('diskon'),
-				'qty'      => $this->input->post('qty_grosir'),
-				'amount'	  => str_replace(",", "", $this->input->post('harjul_grosir'))
+				'qty'      => $this->input->post('qty'),
+				'amount'	  => str_replace(",", "", $this->input->post('harjul'))
 			);
 			
 			$this->cart->insert($data);
@@ -126,7 +128,7 @@ class Datatransaksi extends AUTH_Controller {
 					$nofak=$this->M_penjualan->get_nofak();
 					$this->session->set_userdata('nofak',$nofak);
 					$order_proses=$this->M_penjualan->simpan_penjualan($nofak,$total,$jml_uang,$kembalian);
-					$data['datatransaksi']=$this->M_penjualan->select_nota('270420000004');
+					$data['datatransaksi']=$this->M_penjualan->cetak_faktur($nofak);
 					if($order_proses){
 						$this->cart->destroy();
 

@@ -61,11 +61,11 @@ class Datatransaksigrosir extends AUTH_Controller {
 			$produk=$this->M_barang->get_barang($kobar);
 			$i=$produk->row_array();
 			$data = array(
-				'id'       => $i['id_brg'],
+				'id'       => $i['id_brg'].$this->input->post('satuan'),
 				'name'     => $i['nama_brg'],
 				'satuan'   => $this->input->post('satuan'),
 				'harpok'   => $i['hrg_beli'],
-				'price'    => str_replace(",", "", $i['pcs_hrgjual_grosir']),
+				'price'    => str_replace(",", "", $this->input->post('harjul')),
 				'disc'     => $this->input->post('diskon'),
 				'qty'      => $this->input->post('qty'),
 				'amount'	  => str_replace(",", "", $this->input->post('harjul'))
@@ -92,12 +92,13 @@ class Datatransaksigrosir extends AUTH_Controller {
 					$nofak=$this->M_penjualan->get_nofak();
 					$this->session->set_userdata('nofak',$nofak);
 					$order_proses=$this->M_penjualan->simpan_penjualan_grosir($nofak,$total,$jml_uang,$kembalian);
+					$data['datatransaksi']=$this->M_penjualan->cetak_faktur($nofak);
 					if($order_proses){
 						$this->cart->destroy();
-					//$this->session->unset_userdata('nofak');
+
 						$this->session->unset_userdata('tglfak');
 						$this->session->unset_userdata('suplier');
-						redirect('datatransaksi');
+						$this->load->view('datatransaksi/nota', $data);	
 					}else{
 						redirect('datatransaksi');
 						
