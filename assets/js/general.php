@@ -283,4 +283,13 @@
 
         return b;
     }
+
+    if (cekElement(".onlyNumber")){
+        $('.onlyNumber').keypress(function(event) {
+            $(this).val($(this).val().replace(/[^\d].+/, ""));
+            if ((event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+            }
+        });
+    }
 </script>
