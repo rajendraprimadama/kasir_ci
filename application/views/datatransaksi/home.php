@@ -4,11 +4,18 @@
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
  <?php $this->load->view('_layout/_meta'); ?>
  <?php $this->load->view('_layout/_css'); ?>
+
  <div class="box skin-blue sidebar-mini sidebar-collapse" id="halaman">
+ 
+
   <div class="box-header">
     <div class="col-md-30">
       <section class="content">
         <div class="row">
+          <div class="col-md-30">
+            <?php $this->load->view('_layout/_header_transaksi'); ?>
+          </div>
+
           <div class="col-md-30">
             <!-- Custom Tabs -->
             <script src="<?php echo base_url(); ?>assets/bootstrap/js/typeahead.min.js"></script>
