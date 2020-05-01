@@ -24,9 +24,6 @@ class Datareport extends AUTH_Controller {
 
 		$data['controller'] = $this;
 		$data['datatable'] = $result;
-		// var_dump(count($result));
-		// die();
-		// return $this->load->view('datareport/penjualan/list_data', $data);
 
 		$respon = [
 			"count_data" => count($result),
@@ -191,8 +188,17 @@ class Datareport extends AUTH_Controller {
 
 		$data['controller'] = $this;
 		$data['datatable'] = $result;
-		return $this->load->view('datareport/keuntungan/list_data', $data);
-	}
+
+		$respon = [
+			"count_data" => count($result),
+			"table_list" => $this->load->view('datareport/keuntungan/list_data', $data, true),
+			"startdate" => $param['startdate'],
+			"enddate" => $param['enddate'],
+			"startdate_show" => date('d M Y',strtotime($param['startdate'])),
+			"enddate_show" => date('d M Y',strtotime($param['enddate']))
+		];
+
+		echo json_encode($respon);	}
 
 	public function exportExcelKeuntungan(){
 		$param 	= [

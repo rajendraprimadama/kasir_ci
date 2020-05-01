@@ -1,43 +1,15 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $(document).on('click', '.btn-action', function(event){
-            _page._logic(this)
+            _page.logic(this)
         });
 
-        $('.v_startdate').datepicker({
-            dateFormat: 'dd-mm-yy',
-            changeMonth: true,
-            changeYear: true,
-            yearRange: "-5:+1",
-            maxDate: new Date(),
-            onClose: function () {
-                $('.v_enddate').prop('readonly', true);
-                $('.v_enddate').val(null);
-                var minDate = $(this).datepicker('getDate');
-                if (minDate) {
-                    minDate.setDate(minDate.getDate()) + minDate.getFullYear();
-                }
-                $('.v_enddate').datepicker('option', 'minDate', minDate ||
-                    1);
-
-                $('.v_enddate').val(null);
-            }
-        });
-
-        $('.v_enddate').datepicker({
-            dateFormat: 'dd-mm-yy',
-            changeMonth: true,
-            changeYear: true,
-            maxDate: new Date(),
-            onClose: function () {
-                $('.v_startdate').datepicker('option', 'maxDate');
-            }
-        });
+        _page.component()
 
     });
 
     const _page= {
-        _logic: (element) => {
+        logic: (element) => {
             switch($(element).attr('data-action')) {
                 case 'search':
                     if($('input[name=v_stardate]').val().length==0) {
@@ -59,13 +31,19 @@
                                 myLoad('start','.box-body');
                             }
                         })
-                        .done(function(respon) {
+                        .done(function(response) {
                             myLoad('end','.box-body');
-                            $('.tbody-report').empty().html(respon)
+                            respon = JSON.parse(response);
+                            $('.tbody-report').empty().html(respon.table_list)
 
-                            $('.v_startdate_show').val(data.startdate)
-                            $('.v_enddate_show').val(data.enddate)
-                            $('.div-print-export').removeClass('hidden')
+                            $('.v_startdate_show').val(respon.startdate)
+                            $('.v_enddate_show').val(respon.enddate)
+                            $('#label_tanggal').removeClass('hidden').empty().html(`<td class="text-center" colspan="100%"><strong>${respon.startdate_show}</strong> s/d <strong>${respon.enddate_show}</strong></td>`)
+                            if(respon.count_data > 0) {
+                                $('.div-print-export').removeClass('hidden')
+                            }else {
+                                $('.div-print-export').addClass('hidden')
+                            }
                         })
                     }
                     
@@ -77,6 +55,8 @@
                     document.body.innerHTML = printContents;
                     window.print();
                     document.body.innerHTML = originalContents;
+
+                    _page.component()
                     break;
 
                 case 'export':
@@ -109,6 +89,38 @@
                     myAlert('error','Action not declared')
                     break;
             }
+        },
+
+        component: () => {
+            $('.v_startdate').datepicker({
+                dateFormat: 'dd-mm-yy',
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-5:+1",
+                maxDate: new Date(),
+                onClose: function () {
+                    $('.v_enddate').prop('readonly', true);
+                    $('.v_enddate').val(null);
+                    var minDate = $(this).datepicker('getDate');
+                    if (minDate) {
+                        minDate.setDate(minDate.getDate()) + minDate.getFullYear();
+                    }
+                    $('.v_enddate').datepicker('option', 'minDate', minDate ||
+                        1);
+
+                    $('.v_enddate').val(null);
+                }
+            });
+
+            $('.v_enddate').datepicker({
+                dateFormat: 'dd-mm-yy',
+                changeMonth: true,
+                changeYear: true,
+                maxDate: new Date(),
+                onClose: function () {
+                    $('.v_startdate').datepicker('option', 'maxDate');
+                }
+            });
         }
     }
 </script>

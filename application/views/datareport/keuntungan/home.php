@@ -47,6 +47,12 @@
         <div class="table-responsive bg-white mb-3 ">
           <table class="table table-bordered table-xs table-striped table-hover table-data" >
               <thead class="text-uppercase">
+                <tr>
+                    <td class="text-center" colspan="100%"><strong>laporan keuntungan</strong></td>
+                  </tr>
+                  <tr id="label_tanggal" class="hidden">
+                    
+                  </tr>
                   <tr>
                       <th class="text-center" width="1%">NO</th>
                       <th class="text-center">No Transaksi</th>
