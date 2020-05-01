@@ -129,6 +129,7 @@ class Datatransaksi extends AUTH_Controller {
 					$this->session->set_userdata('nofak',$nofak);
 					$order_proses=$this->M_penjualan->simpan_penjualan($nofak,$total,$jml_uang,$kembalian);
 					$data['datatransaksi']=$this->M_penjualan->cetak_faktur($nofak);
+					$data['userdata'] = $this->userdata;
 					if($order_proses){
 						$this->cart->destroy();
 
