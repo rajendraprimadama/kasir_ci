@@ -19,7 +19,16 @@
 		margin: 0;
 		padding: 0;
 		color: #3e3e3e;
-	}
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+      
+    }
+
+    a[href]:after {
+        content: none !important;
+      }
 }
 
 @media screen{

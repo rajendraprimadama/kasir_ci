@@ -59,13 +59,19 @@
                                 myLoad('start','.box-body');
                             }
                         })
-                        .done(function(respon) {
+                        .done(function(response) {
                             myLoad('end','.box-body');
-                            $('.tbody-report').empty().html(respon)
+                            respon = JSON.parse(response);
+                            $('.tbody-report').empty().html(respon.table_list)
 
-                            $('.v_startdate_show').val(data.startdate)
-                            $('.v_enddate_show').val(data.enddate)
-                            $('.div-print-export').removeClass('hidden')
+                            $('.v_startdate_show').val(respon.startdate)
+                            $('.v_enddate_show').val(respon.enddate)
+                            $('#label_tanggal').removeClass('hidden').empty().html(`<td class="text-center" colspan="100%"><strong>${respon.startdate_show}</strong> s/d <strong>${respon.enddate_show}</strong></td>`)
+                            if(respon.count_data > 0) {
+                                $('.div-print-export').removeClass('hidden')
+                            }else {
+                                $('.div-print-export').addClass('hidden')
+                            }
                         })
                     }
                     
