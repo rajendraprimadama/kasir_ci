@@ -70,14 +70,17 @@
 <body onload="window.print();">
     <div class="ticket">
        <!--  <img src="./logo.png" alt="Logo"> -->
-       <p class="centered">Toko AAN
+       <p class="centered">Toko <strong>AAN</strong>
         <br>Purbalingga
-        <br>Jalan aja dulu
-        Nikah kemudian
-        <br><?php echo $b['jual_nofak'];?>
-        <br><?php echo date('d-m-Y'); ?></p>
         <table>
             <thead>
+                <tr>
+                    <td class="text-left" colspan="2"><?php echo $b['jual_nofak'];?></td>
+                    <td class="text-right" colspan="2">Kasir: <?php echo $userdata->nama; ?></td>
+                </tr>
+                <tr>
+                    <td class="text-right" colspan="100%">Tgl. <?php echo date('d-m-Y H:i:s'); ?></td>
+                </tr>
                 <tr>
                     <th class="description"></th>
                     <th class="quantity"></th>
