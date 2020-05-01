@@ -118,6 +118,18 @@ class M_dbrg extends CI_Model {
 		}
 		
         return $generate_id;
+	}
+	
+	function getDataBarang($param){
+        
+        $query = $this->db->query("
+                                    SELECT *    
+                                    FROM `data_barang`
+                                    WHERE nama_brg LIKE '%".$param."%'
+                                    ORDER BY nama_brg ASC
+                                ");
+
+		return $query->result();
     }
 }
 
