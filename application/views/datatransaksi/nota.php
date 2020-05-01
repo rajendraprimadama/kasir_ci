@@ -1,202 +1,121 @@
-<!doctype html>
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Print Nota</title>
-    
-    <style>
-        .invoice-box {
-            max-width: 300px;
-            margin: auto;
-            border: 1px solid #eee;
-            box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Nota Penjualan</title>
+    <style type="text/css">
+        * {
             font-size: 11px;
-            line-height: 24px;
-            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-            color: #555;
+            font-family: 'Times New Roman';
         }
 
-        .invoice-box table {
-            width: 100%;
-            line-height: inherit;
-            text-align: left;
+        td,
+        th,
+        tr,
+        table {
+            border-top: 1px solid black;
+            border-collapse: collapse;
         }
 
-        .invoice-box table td {
-            padding: 5px;
-            vertical-align: top;
+        td.description,
+        th.description {
+            width: 100px;
+            max-width: 100px;
         }
 
-        .invoice-box table tr td:nth-child(2) {
-            text-align: right;
+        td.quantity,
+        th.quantity {
+            width: 30px;
+            max-width: 30px;
+            word-break: break-all;
         }
 
-        .invoice-box table tr.top table td {
-            padding-bottom: 20px;
+        td.price,
+        th.price {
+            width: 100px;
+            max-width: 100px;
+            word-break: break-all;
         }
 
-        .invoice-box table tr.top table td.title {
-            font-size: 25px;
-            line-height: 45px;
-            color: #333;
+        .centered {
+            text-align: center;
+            align-content: center;
         }
 
-        .invoice-box table tr.information table td {
-            padding-bottom: 40px;
+        .ticket {
+            width: 200px;
+            max-width: 200px;
         }
 
-        .invoice-box table tr.heading td {
-            background: #eee;
-            border-bottom: 1px solid #ddd;
-            font-weight: bold;
+        img {
+            max-width: inherit;
+            width: inherit;
         }
 
-        .invoice-box table tr.details td {
-            padding-bottom: 10px;
-        }
-
-        .invoice-box table tr.item td{
-            border-bottom: 1px solid #eee;
-        }
-
-        .invoice-box table tr.item.last td {
-            border-bottom: none;
-        }
-
-        .invoice-box table tr.total td:nth-child(2) {
-            border-top: 2px solid #eee;
-            font-weight: bold;
-        }
-
-        @media only screen and (max-width: 600px) {
-            .invoice-box table tr.top table td {
-                width: 100%;
-                display: block;
-                text-align: center;
+        @media print {
+            .hidden-print,
+            .hidden-print * {
+                display: none !important;
             }
-
-            .invoice-box table tr.information table td {
-                width: 100%;
-                display: block;
-                text-align: center;
-            }
-        }
-
-        /** RTL **/
-        .rtl {
-            direction: rtl;
-            font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-        }
-
-        .rtl table {
-            text-align: right;
-        }
-
-        .rtl table tr td:nth-child(2) {
-            text-align: left;
         }
     </style>
 </head>
-
-<body onload="window.print()">
-    <div class="invoice-box" >
-        <table cellpadding="0" cellspacing="0">
-            <tr class="top">
-                <td colspan="2">
-                    <table>
-                        <tr class="item">
-                            <td class="title">
-                                Toko AAN<br/>Purbalingga
-                                <!-- <img src="https://www.sparksuite.com/images/logo.png" style="width:100%; max-width:300px;"> -->
-                            </td>
-                            
-                            <td></td>
-                            
-                            <td style="">
-                                <?php 
-                                date_default_timezone_set('asia/jakarta');
-                                echo date("j M Y G:i:s")."<br>";
-                                $options = "";
-                                foreach ($datatransaksi as $key => $value) {
-                                    ?>
-                                    <?php echo "No nota ".$value->id."<br>";?>
-                                    <?php echo "Kasir ".$value->user;?>
-                                    <?php
-                                }
-                                ?>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <hr/>
-
-            <tr class="details item">
-               <?php
-               foreach ($datatransaksi as $dtransaksi) {
-                  ?>
-                  <td style="max-width: 40px"><?php echo $dtransaksi->nama; ?></td>
-                  <td ><?php echo $dtransaksi->qty; ?></td>
-                  <td ><?php echo "Rp " . number_format($dtransaksi->harjul, 0, ",", "."); ?></td>
-                  <?php
-              }
-              ?>
-          </tr>
-
-          <tr class="item">
-            <td>
-                Total Item
-            </td>
-            <?php
-            foreach ($datatransaksi as $dtransaksi) {
-                ?>
-                <td><?php echo $dtransaksi->qty; ?></td>
-                <?php
-            }
-            ?>
-            <?php
-            foreach ($datatransaksi as $dtransaksi) {
-              ?>
-              <td><?php echo "Rp " . number_format($dtransaksi->total, 0, ",", "."); ?></td>
-              <?php
-          }
-          ?>
-      </tr>
-      <tr class="item">
-        <td>
-            Tunai
-        </td>
-
-        <td>
-
-        </td> 
-        <?php
-        foreach ($datatransaksi as $dtransaksi) {
-          ?>
-          <td><?php echo "Rp " . number_format($dtransaksi->bayar, 0, ",", ".");?></td>
-          <?php
-      }
-      ?>
-  </tr>
-
-  <tr class="item">
-    <td>
-     Kembalian
- </td>
-
- <td>
-
- </td> 
- <?php
- foreach ($datatransaksi as $dtransaksi) {
-  ?>
-  <td><?php echo "Rp " . number_format(((int)$dtransaksi->bayar-(int)$dtransaksi->total), 0, ",", ".");?></td>
-  <?php
-}
+<?php 
+    $b=$datatransaksi->row_array();
 ?>
-</tr>
+<body onload="window.print();">
+    <div class="ticket">
+       <!--  <img src="./logo.png" alt="Logo"> -->
+       <p class="centered">Toko AAN
+        <br>Purbalingga
+        <br>Jalan aja dulu
+        Nikah kemudian
+        <br><?php echo $b['jual_nofak'];?>
+        <br><?php echo date('d-m-Y'); ?></p>
+        <table>
+            <thead>
+                <tr>
+                    <th class="description"></th>
+                    <th class="quantity"></th>
+                    <th class="quantity"></th>
+                    <th class="price"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                $no=0;
+                foreach ($datatransaksi->result_array() as $i) {
+                    $no++;
 
-</table>
-</div>
-</body>
-</html>
+                    $nabar=$i['d_jual_barang_nama'];
+                    $satuan=$i['d_jual_barang_satuan'];
+
+                    $harjul=$i['d_jual_barang_harjul'];
+                    $qty=$i['d_jual_qty'];
+                    $diskon=$i['d_jual_diskon'];
+                    $total=$i['d_jual_total'];
+                    ?>
+                    <tr>
+                        <td class="description"><?php echo $nabar;?></td>
+                        <td class="quantity"><?php echo $qty;?></td>
+                        <td class="quantity"><?php echo $satuan;?></td>
+                        <td class="price"><?php echo 'Rp '.number_format($total);?></td>
+                    </tr>
+                    <?php }?>
+                    <tr>
+                        <td class="description"><b>Total</b></td>
+                        <td class="quantity"></td>
+                        <td class="quantity"></td>
+                        <td class="price"><b><?php echo 'Rp '.number_format($b['jual_total']);?></b></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="centered">Terimakasih atas kunjunganya!
+                <br></p>
+            </div>
+        </body>
+        </html>

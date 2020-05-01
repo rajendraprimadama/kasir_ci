@@ -2,7 +2,7 @@
     <table class="table table-bordered table-condensed" style="font-size:11px;margin-top:10px;">
         <thead>
         <tr>
-            <th>Kode Barang</th>
+            <th>Kode Barcode</th>
             <th>Nama Barang</th>
             <th style="text-align:center;">Satuan</th>
             <th style="text-align:center;">Harga(Rp)</th>
@@ -10,7 +10,7 @@
             <th style="text-align:center;">Sub Total</th>
             <th style="width:100px;text-align:center;">Aksi</th>
         </tr>
-        </thead>
+        </thead> 
         <tbody>
 
         <?php foreach ($this->cart->contents() as $items): ?>
@@ -23,7 +23,6 @@
                 <td style="text-align:right;"><?php echo number_format($items['amount']);?></td>
                 <td style="text-align:center;"><?php echo number_format($items['qty']);?></td>
                 <td style="text-align:right;"><?php echo number_format($items['subtotal']);?></td>
-
                 <td style="text-align:center;">
                     <button class="btn btn-danger btn-sm btn-remove-barang" data-index="<?php echo $isIndex ?>"><i class="fa fa-close"></i> Hapus</button>
                 </td>
