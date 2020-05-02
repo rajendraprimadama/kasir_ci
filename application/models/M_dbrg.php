@@ -20,13 +20,15 @@ class M_dbrg extends CI_Model {
 
 	public function insert($data) {
 		$sql = "INSERT INTO data_barang 
-		(id_brg,barcode_brg,nama_brg,kategori,hrg_beli,pcs_hrgjual_retail,pax_hrgjual_retail,dus_hrgjual_retail,pcs_hrgjual_grosir,pax_hrgjual_grosir,dus_hrgjual_grosir) 
+		(id_brg,barcode_brg,nama_brg,kategori,hrg_beli_pcs,hrg_beli_pax,hrg_beli_dus,pcs_hrgjual_retail,pax_hrgjual_retail,dus_hrgjual_retail,pcs_hrgjual_grosir,pax_hrgjual_grosir,dus_hrgjual_grosir) 
 		VALUES(
 		'" .$this->generateID($data['v_namabrg'])."',
 		'" .$data['v_barcode']."',	
 		'" .$data['v_namabrg'] ."',
 		'" .$data['v_kategori'] ."',
-		'" .$this->saveInt($data['v_hrgbeli'])."',
+		'" .$this->saveInt($data['v_hrgbeli_pcs'])."',
+		'" .$this->saveInt($data['v_hrgbeli_pax'])."',
+		'" .$this->saveInt($data['v_hrgbeli_dus'])."',
 		'" .$this->saveInt($data['v_pcs_hrgjual_retail'])."',
 		'" .$this->saveInt($data['v_pax_hrgjual_retail'])."',
 		'" .$this->saveInt($data['v_dus_hrgjual_retail'])."',
