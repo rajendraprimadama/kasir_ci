@@ -7,7 +7,9 @@
       <td class="text-center"><?php echo $data_barang->id_brg; ?></td>
       <td class="text-center"><?php echo $data_barang->nama_brg; ?></td>
       <td class="text-center"><?php echo $data_barang->kategori; ?></td>
-      <td class="text-center"><?php echo $data_barang->hrg_beli; ?></td>
+      <td class="text-center"><?php echo $data_barang->hrg_beli_pcs; ?></td>
+      <td class="text-center"><?php echo $data_barang->hrg_beli_pax; ?></td>
+      <td class="text-center"><?php echo $data_barang->hrg_beli_dus; ?></td>
       <td class="text-center"><?php echo $data_barang->pcs_hrgjual_retail; ?></td>
       <td class="text-center"><?php echo $data_barang->pax_hrgjual_retail; ?></td>
       <td class="text-center"><?php echo $data_barang->dus_hrgjual_retail; ?></td>
