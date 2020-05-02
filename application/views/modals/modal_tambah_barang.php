@@ -206,7 +206,7 @@
     }
     else {
       if (sell < buy) {
-        myAlert('error','Harga jual tidak boleh lebih kecil dari harga beli')
+        myAlert('error',`Harga jual ${isCategory} tidak boleh lebih kecil dari harga beli ${isCategory}`)
         $(param).val('')
       }
     }

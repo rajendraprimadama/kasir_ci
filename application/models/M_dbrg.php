@@ -50,7 +50,9 @@ class M_dbrg extends CI_Model {
 	public function update($data) {
 		$sql = "UPDATE data_barang SET nama_brg='" .$data['v_namabrg'] ."',
 					kategori='" .$data['v_kategori'] ."',
-					hrg_beli='" .$this->saveInt($data['v_hrgbeli']) ."',
+					hrg_beli_pcs='" .$this->saveInt($data['v_hrgbeli_pcs']) ."',
+					hrg_beli_pax='" .$this->saveInt($data['v_hrgbeli_pax']) ."',
+					hrg_beli_dus='" .$this->saveInt($data['v_hrgbeli_dus']) ."',
 					pcs_hrgjual_retail='" .$this->saveInt($data['v_pcs_hrgjual_retail']) ."',
 					pax_hrgjual_retail='" .$this->saveInt($data['v_pax_hrgjual_retail']) ."',
 					dus_hrgjual_retail='" .$this->saveInt($data['v_dus_hrgjual_retail']) ."',
