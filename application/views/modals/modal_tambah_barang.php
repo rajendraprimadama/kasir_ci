@@ -34,8 +34,8 @@
               </div>
             </div>
           </div>
+        </div>
           
-
         <div class="input-group form-group">
           <span class="input-group-addon" id="sizing-addon2">
             <i class="glyphicon glyphicon-folder-close"></i>
