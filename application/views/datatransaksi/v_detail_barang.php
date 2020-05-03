@@ -40,9 +40,9 @@
 
 								$("#satuan").change(function() {
 									var kode_satuan = $("#satuan").val();
-									if (kode_satuan == '1') {
+									if (kode_satuan == 'PCS') {
 										$("#harjul").val(FormatNumber(<?php echo $b['pcs_hrgjual_retail'];?>))
-									}else if(kode_satuan == '2'){
+									}else if(kode_satuan == 'PAX'){
 										$("#harjul").val(FormatNumber(<?php echo $b['pax_hrgjual_retail'];?>))
 									}else{
 										$("#harjul").val(FormatNumber(<?php echo $b['dus_hrgjual_retail'];?>))
