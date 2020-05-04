@@ -31,6 +31,17 @@
                                     <span class="hidden-xs" style="color:white"><?php echo $userdata->nama; ?></span>
                                 </a>
                                 <ul class="dropdown-menu" style="width:100px">
+                                    <?php if($page == "Data Barang") {
+                                        ?>
+                                        <li><a href="<?php echo base_url('Datatransaksi'); ?>">Penjualan</a></li>
+                                        <?php
+                                    }else {
+                                        ?>
+                                        <li><a href="<?php echo base_url('Databarang/listBarang'); ?>">Daftar Barang</a></li>
+                                        <?php
+
+                                    }
+                                    ?>
                                     <li><a href="<?php echo base_url('Auth/logout'); ?>">Sign out</a></li>
                                     
                                 </ul>

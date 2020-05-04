@@ -100,6 +100,19 @@ class Databarang extends AUTH_Controller {
 			echo show_err_msg('Data Barang Gagal dihapus', '20px');
 		}
 	}
+
+	public function listBarang(){
+		try {
+			$data['userdata'] 	= $this->userdata;
+			$data['dataBarang'] = $this->M_dbrg->select_all();
+			$data['page'] = "Data Barang";
+
+			$this->load->view('databarang/kasir/list_barang', $data);
+		}
+		catch (Exception $e) {
+			throw $e;
+		}
+	}
 }
 /* End of file Posisi.php */
 /* Location: ./application/controllers/Posisi.php */
