@@ -71,11 +71,15 @@ class Datatransaksi extends AUTH_Controller {
 			$kobar=$this->input->post('kode_brg');
 			$produk=$this->M_barang->get_barang($kobar);
 			$i=$produk->row_array();
+
+			#filter harga beli
+			$satuan = strtolower($this->input->post('satuan'));
+			$harga_beli = $i['hrg_beli_'.$satuan];
 			$data = array(
 				'id'       => $i['id_brg'].$this->input->post('satuan'),
 				'name'     => $i['nama_brg'],
 				'satuan'   => $this->input->post('satuan'),
-				'harpok'   => $i['hrg_beli'],
+				'harpok'   => $harga_beli,
 				'price'    => str_replace(",", "", $this->input->post('harjul')),
 				'disc'     => $this->input->post('diskon'),
 				'qty'      => $this->input->post('qty'),
