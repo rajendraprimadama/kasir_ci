@@ -118,7 +118,7 @@ class Datareport extends AUTH_Controller {
 		$isTotal = 0;
 		foreach($result as $ket => $val){ // Lakukan looping pada variabel siswa
 			$excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $no);
-			$excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $val->NO_Transaksi);
+			$excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $val->NO_Transaksi, PHPExcel_Cell_DataType::TYPE_STRING);
 			$excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, date('d M Y',strtotime($val->DATE)));
 			$excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, strtoupper($val->Keterangan));
 			$excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, self::FormatNumber($val->Total_HargaJual));
@@ -280,7 +280,7 @@ class Datareport extends AUTH_Controller {
 		$isTotalHargaJual = 0;
 		foreach($result as $ket => $val){ // Lakukan looping pada variabel siswa
 			$excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $no);
-			$excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $val->NO_Transaksi);
+			$excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $val->NO_Transaksi, PHPExcel_Cell_DataType::TYPE_STRING);
 			$excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, date('d M Y',strtotime($val->DATE)));
 			$excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, strtoupper($val->Keterangan));
 			$excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, self::FormatNumber($val->Total_HargaBeli));
