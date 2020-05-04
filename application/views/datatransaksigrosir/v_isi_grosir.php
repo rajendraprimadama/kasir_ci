@@ -2,7 +2,7 @@
 <table class="table table-bordered table-condensed" style="font-size:11px;margin-top:10px;">
     <thead>
         <tr>
-            <th>Kode Barang</th>
+            <th>Kode Barcode</th>
             <th>Nama Barang</th>
             <th style="text-align:center;">Satuan</th>
             <th style="text-align:center;">Harga(Rp)</th>
