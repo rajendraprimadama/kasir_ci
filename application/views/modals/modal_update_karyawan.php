@@ -5,6 +5,7 @@
 
   <form id="form-update-karyawan" method="POST">
     <input type="hidden" name="id" value="<?php echo $dataKaryawan->id; ?>">
+    <input type="hidden" name="id_admin" value="<?php echo $dataKaryawan->id_admin; ?>">
 
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">

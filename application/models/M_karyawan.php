@@ -46,14 +46,14 @@ class M_karyawan extends CI_Model {
 		return $this->db->affected_rows();
 	}
 
-	public function update($data) {
-		$sql = "UPDATE data_karyawan SET 
-					name='" .$data['v_nama'] ."',
-					address='" .$data['v_alamat'] ."',
-					phone='" .$data['v_phone'] ."'
-		 		WHERE id='" .$data['id'] ."'";
-
-		$this->db->query($sql);
+	public function update($data,$id_admin) {
+		$this->db->where('id', $data['id']);
+		$this->db->update('data_karyawan',[
+							'id_admin' => $id_admin,
+							'name' => $data['v_nama'],
+							'address' => $data['v_alamat'],
+							'phone' => $data['v_phone']
+						]);
 
 		return $this->db->affected_rows();
 	}

@@ -78,7 +78,25 @@ class Datakaryawan extends AUTH_Controller {
 
 		$data 	= $this->input->post();
 		if ($this->form_validation->run() == TRUE) {
-			$result = $this->M_karyawan->update($data);
+			# add access to table_admin
+			$last_id = 0;
+			if($this->input->post("id_admin") == 0) {
+				if ($this->input->post("v_authority") != "no_access") {
+					$last_id = $this->M_admin->insert($data);
+				}
+			} else {
+				$id_admin = $this->input->post("id_admin");
+				if ($this->input->post("v_authority") != "no_access") {
+					#update di us dan pass di admin
+					$last_id = $this->input->post("id_admin");
+					$this->M_admin->update($data,$id_admin);
+				} else {
+					# hapus data di admin
+					$this->M_admin->delete($id_admin);
+				}
+			}
+			
+			$result = $this->M_karyawan->update($data,$last_id);
 
 			if ($result > 0) {
 				$out['status'] = '';
@@ -97,6 +115,11 @@ class Datakaryawan extends AUTH_Controller {
 
 	public function delete() {
 		$id = $_POST['id'];
+
+		$select_karyawan  = $this->M_karyawan->select_by_id($id);
+		if($select_karyawan->id_admin != 0){
+			$this->M_admin->delete($select_karyawan->id_admin);
+		}
 		$result = $this->M_karyawan->delete($id);
 		
 		if ($result > 0) {

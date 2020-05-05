@@ -2,12 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_admin extends CI_Model {
-	public function update($data, $id) {
-		$this->db->where("id", $id);
-		$this->db->update("admin", $data);
+	// public function update($data, $id) {
+	// 	$this->db->where("id", $id);
+	// 	$this->db->update("admin", $data);
 
-		return $this->db->affected_rows();
-	}
+	// 	return $this->db->affected_rows();
+	// }
 
 	public function select($id = '') {
 		if ($id != '') {
@@ -20,11 +20,6 @@ class M_admin extends CI_Model {
 	}
 
 	public function insert($data) {
-		// $sql = "INSERT INTO admin  (username,password,nama,authority_level) VALUES (
-		// '" .$data['v_username'] ."',
-		// '" .md5($data['v_password']) ."',
-		// '" .$data['v_nama'] ."',
-		// '" .$data['v_authority'] ."')";
 
 		$this->db->insert('admin',[
 							'username' => $data['v_username'],
@@ -34,9 +29,28 @@ class M_admin extends CI_Model {
 						]);
 
 		$insert_id = $this->db->insert_id();
-		// $this->db->query($sql);
 
 		return $insert_id;
+	}
+
+	public function update($data,$id) {
+
+		$this->db->where('id', $id);
+		$this->db->update('admin',[
+							'username' => $data['v_username'],
+							'password' => md5($data['v_password']),
+							'nama' => $data['v_nama'],
+							'authority_level' => $data['v_authority']
+						]);
+
+		return $this->db->affected_rows();
+	}
+
+	public function delete($id) {
+		$this->db->where('id', $id);
+		$this->db->delete('admin');
+
+		return $this->db->affected_rows();
 	}
 }
 
