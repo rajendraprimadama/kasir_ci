@@ -2,12 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_admin extends CI_Model {
-	// public function update($data, $id) {
-	// 	$this->db->where("id", $id);
-	// 	$this->db->update("admin", $data);
-
-	// 	return $this->db->affected_rows();
-	// }
 
 	public function select($id = '') {
 		if ($id != '') {
@@ -41,6 +35,17 @@ class M_admin extends CI_Model {
 							'password' => md5($data['v_password']),
 							'nama' => $data['v_nama'],
 							'authority_level' => $data['v_authority']
+						]);
+
+		return $this->db->affected_rows();
+	}
+
+	public function update_pass($data,$id) {
+
+		$this->db->where('id', $id);
+		$this->db->update('admin',[
+							'username' => $data['username'],
+							'password' => $data['password']
 						]);
 
 		return $this->db->affected_rows();
