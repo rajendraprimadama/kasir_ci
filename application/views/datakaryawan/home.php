@@ -18,7 +18,7 @@
           <th>Nama Karyawan</th>
           <th>Alamat</th>
           <th>Telephon</th>
-
+          <th>Akses</th>
           <th style="text-align: center;">Aksi</th>
         </tr>
       </thead>

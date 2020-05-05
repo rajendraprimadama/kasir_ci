@@ -5,24 +5,37 @@ class M_karyawan extends CI_Model {
 	public function select_all() {
 		$data = $this->db->get('data_karyawan'); //merujuk database
 
+		$this->db->select('data_karyawan.*, admin.authority_level AS authority, admin.username, admin.password');
+		$this->db->from('data_karyawan');
+		$this->db->join('admin', 'data_karyawan.id_admin = admin.id','left outer'); 
+		$data = $this->db->get();
+
 		return $data->result();
 	}
 
 	public function select_by_id($id) {
-		$sql = "SELECT * FROM data_karyawan WHERE id = '{$id}'";
 
-		$data = $this->db->query($sql);
+		$this->db->select('data_karyawan.*, admin.authority_level AS authority, admin.username, admin.password');
+		$this->db->from('data_karyawan');
+		$this->db->join('admin', 'data_karyawan.id_admin = admin.id','left outer');
+		$this->db->where('data_karyawan.id',$id);
+		$data = $this->db->get();
+
+		// $sql = "SELECT * FROM data_karyawan WHERE id = '{$id}'";
+
+		// $data = $this->db->query($sql);
 
 		return $data->row();
 	}
 
-	public function insert($data) {
-		$sql = "INSERT INTO data_karyawan VALUES('',
-		'" .$data['v_nama'] ."',
-		'" .$data['v_alamat'] ."',
-		'" .$data['v_phone'] ."')";
+	public function insert($data, $akses) {
 
-		$this->db->query($sql);
+		$this->db->insert('data_karyawan',[
+			'id_admin' => $akses,
+			'name' => $data['v_nama'],
+			'address' => $data['v_alamat'],
+			'phone' => $data['v_phone']
+		]);
 
 		return $this->db->affected_rows();
 	}

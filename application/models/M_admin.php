@@ -20,15 +20,23 @@ class M_admin extends CI_Model {
 	}
 
 	public function insert($data) {
-		$sql = "INSERT INTO admin  (username,password,nama,authority_level) VALUES (
-		'" .$data['v_username'] ."',
-		'" .md5($data['v_password']) ."',
-		'" .$data['v_nama'] ."',
-		'" .$data['v_authority'] ."')";
+		// $sql = "INSERT INTO admin  (username,password,nama,authority_level) VALUES (
+		// '" .$data['v_username'] ."',
+		// '" .md5($data['v_password']) ."',
+		// '" .$data['v_nama'] ."',
+		// '" .$data['v_authority'] ."')";
 
-		$this->db->query($sql);
+		$this->db->insert('admin',[
+							'username' => $data['v_username'],
+							'password' => md5($data['v_password']),
+							'nama' => $data['v_nama'],
+							'authority_level' => $data['v_authority']
+						]);
 
-		return $this->db->affected_rows();
+		$insert_id = $this->db->insert_id();
+		// $this->db->query($sql);
+
+		return $insert_id;
 	}
 }
 

@@ -37,12 +37,13 @@ class Datakaryawan extends AUTH_Controller {
         
 		$data 	= $this->input->post();
 		if ($this->form_validation->run() == TRUE) {
-            # add access to table_admin
+			# add access to table_admin
+			$last_id = 0;
             if ($this->input->post("v_authority") != "no_access") {
-                $this->M_admin->insert($data);
+                $last_id = $this->M_admin->insert($data);
             }
 
-			$result = $this->M_karyawan->insert($data);
+			$result = $this->M_karyawan->insert($data,$last_id);
 
 			if ($result > 0) {
 				$out['status'] = '';

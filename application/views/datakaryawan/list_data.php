@@ -7,6 +7,7 @@
       <td style="width: 15%;"><?php echo $val->name; ?></td>
       <td style="width: 30%;"><?php echo $val->address; ?></td>
       <td style="width: 15%;"><?php echo $val->phone; ?></td>
+      <td style="width: 15%;"><?php echo $val->authority; ?></td>
       <td class="text-center" style="width:20%;">
 
         <button class="btn btn-warning update-dataKaryawan" data-id="<?php echo $val->id; ?>"><i class="glyphicon glyphicon-repeat"></i> Update</button>

@@ -28,6 +28,39 @@
             </span>
             <input type="text" onkeypress="return Angkasaja(event)"  class="form-control" placeholder="Nomor Telephon" name="v_phone" aria-describedby="sizing-addon2" required value="<?php echo $dataKaryawan->phone ?>">
         </div>
+
+        <div class="input-group form-group">
+          <span class="input-group-addon bg-warning">
+              AKSES SISTEM
+          </span>
+          <select class="form-control v_authority-edit" name="v_authority" placeholder="tambah akses" onchange="addAccessEdit()">
+              <option value="no_access">TIDAK ADA AKSES</option>
+              <?php 
+                $isSelected = '';
+              foreach($ListAuthority as $key => $val){
+                $isSelected = $val==$dataKaryawan->authority ? 'selected' : '';
+              ?>
+
+                <option value="<?php echo $val ?>" <?php echo $isSelected ?>><?php echo $val ?></option>
+              
+              <?php } ?>
+          </select>
+        </div>
+
+          <div class="input-group form-group div-username-edit <?php echo $dataKaryawan->id_admin!= 0 ? '': 'hidden' ?>">
+              <span class="input-group-addon" id="sizing-addon2">
+                  <i class="glyphicon glyphicon-user"></i>
+              </span>
+              <input type="text"  class="form-control v_username-edit" placeholder="username" name="v_username" aria-describedby="sizing-addon2" value="<?php echo $dataKaryawan->username ?>">
+          </div>
+
+          <div class="input-group form-group div-password-edit <?php echo $dataKaryawan->id_admin!= 0 ? '': 'hidden' ?>">
+              <span class="input-group-addon" id="sizing-addon2">
+                  <i class="glyphicon glyphicon-lock"></i>
+              </span>
+              <input type="text" class="form-control v_password-edit" placeholder="password" name="v_password" aria-describedby="sizing-addon2">
+          </div>
+
       </div>
     </div>
     
@@ -39,3 +72,29 @@
     </div>
   </form>
 </div>
+
+<script type="text/javascript">
+    function Angkasaja(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+        return true;
+    }
+
+    function addAccessEdit() {
+        let access = $('.v_authority-edit').val()
+
+        if(access == "no_access"){
+            $('.div-username-edit').addClass("hidden")
+            $('.div-password-edit').addClass("hidden")
+            $('.v_username-edit').prop('required',false)
+            $('.v_password-edit').prop('required',false)
+        }
+        else{
+            $('.div-username-edit').removeClass("hidden")
+            $('.div-password-edit').removeClass("hidden")
+            $('.v_username-edit').prop('required',true)
+            $('.v_password-edit').prop('required',true)
+        }
+    }
+</script>
