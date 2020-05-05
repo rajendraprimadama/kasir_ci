@@ -37,6 +37,9 @@
 							}
 							*/
 							$(document).ready(function(){
+								let nama = '<?php echo $b['nama_brg']; ?>';
+								let content = '<option value="nama_brg" selected>'+nama+'</option>';
+								$('select[name=nabar]').empty().html(content);
 
 								$("#satuan").change(function() {
 									var kode_satuan = $("#satuan").val();

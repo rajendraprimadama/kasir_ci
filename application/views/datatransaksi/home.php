@@ -1,12 +1,9 @@
- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
- <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
  <?php $this->load->view('_layout/_meta'); ?>
  <?php $this->load->view('_layout/_css'); ?>
+ <?php $this->load->view('_layout/transaksi'); ?>
 
  <div class="box skin-blue sidebar-mini sidebar-collapse" id="halaman">
- 
+
 
   <div class="box-header">
     <div class="col-md-30">
@@ -29,7 +26,7 @@
                   <div class="header-barang">
                     <table>
                       <tr>
-                        <th>Kode Barang</th>
+                        <th>Kode Barcode</th>
                         <th>Nama Barang</th>
                       </tr>
                       <tr>
@@ -43,116 +40,121 @@
                       <div id="detail_barang" style="position:absolute;">
                       </div>
                     </table>
-                    </div>
+                  </div>
                   
                   <div class="content-list-barang">
                     <?php $this->load->view('datatransaksi/v_isi'); ?>
                   </div>
-              </div>
-              <!-- /.tab-pane -->
-              <div class="tab-pane" id="tab_2">
-               <?php $this->load->view('datatransaksigrosir/home'); ?>
+                </div>
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="tab_2">
+                 <?php $this->load->view('datatransaksigrosir/home'); ?>
+               </div>
+
+               <!-- /.tab-pane -->
              </div>
-
-             <!-- /.tab-pane -->
+             <!-- /.tab-content -->
            </div>
-           <!-- /.tab-content -->
+           <!-- nav-tabs-custom -->
          </div>
-         <!-- nav-tabs-custom -->
+         <!-- /.col -->
        </div>
-       <!-- /.col -->
-     </div>
-     <script type="text/javascript" language="javascript">
-      $(document).ready(function(){
-        $("#kode_brg").focus();
-        $("#halaman").keypress(function(e){
-          if (e.which == 71 && $("#tab1").hasClass('active')) 
-          {
-            $("#tab1").removeClass('active');
-            $("#tab_1").removeClass('active');
-            $("#tab2").addClass('active');
-            $("#tab_2").addClass('active');
-            $("#kode_brg_grosir").focus();
+       <script type="text/javascript" language="javascript">
+        $(document).ready(function(){
+          $("#kode_brg").focus();
+          $("#halaman").keypress(function(e){
+            if (e.which == 71 && $("#tab1").hasClass('active')) 
+            {
+              $("#tab1").removeClass('active');
+              $("#tab_1").removeClass('active');
+              $("#tab2").addClass('active');
+              $("#tab_2").addClass('active');
+              $("#kode_brg_grosir").focus();
 
-          }else if(e.which == 71 && $("#tab2").hasClass('active')){
-            $("#tab2").removeClass('active');
-            $("#tab_2").removeClass('active');
-            $("#tab1").addClass('active');
-            $("#tab_1").addClass('active');
-            $("#kode_brg").focus();
-          }
+            }else if(e.which == 71 && $("#tab2").hasClass('active')){
+              $("#tab2").removeClass('active');
+              $("#tab_2").removeClass('active');
+              $("#tab1").addClass('active');
+              $("#tab_1").addClass('active');
+              $("#kode_brg").focus();
+            }
+          });
+
+          $( "select[name=nabar]" ).change(function() {
+             alert(0);
+           });
+          _page.init()
         });
 
-        _page.init()
-      });
+        function cekbarang() {
+          var kode_brg = document.getElementById("kode_brg").value;
+          if (kode_brg.length == 5) {
+            var kobar = {kode_brg};
+            $.ajax({
+             type: "POST",
+             url : "<?php echo base_url().'Datatransaksi/get_barang';?>",
+             data: kobar,
+             success: function(msg){
 
-      function cekbarang() {
-        var kode_brg = document.getElementById("kode_brg").value;
-        if (kode_brg.length == 5) {
-          var kobar = {kode_brg};
-          $.ajax({
-           type: "POST",
-           url : "<?php echo base_url().'Datatransaksi/get_barang';?>",
-           data: kobar,
-           success: function(msg){
-             $('#detail_barang').html(msg);
-             document.getElementById("satuan").focus();
-           }
-         });
+              $('#detail_barang').html(msg);
+              document.getElementById("satuan").focus();
+
+            }
+          });
+          }
+
         }
 
-      }
+        function cekbarang_grosir() {
+          var kode_brg = document.getElementById("kode_brg_grosir").value;
+          if (kode_brg.length == 5) {
+            var kobar = {kode_brg};
+            $.ajax({
+             type: "POST",
+             url : "<?php echo base_url().'Datatransaksigrosir/get_barang_grosir';?>",
+             data: kobar,
+             success: function(msg){
+               $('#detail_barang_grosir').html(msg);
+               document.getElementById("satuan_grosir").focus();
+             }
+           });
+          }
 
-      function cekbarang_grosir() {
-        var kode_brg = document.getElementById("kode_brg_grosir").value;
-        if (kode_brg.length == 5) {
-          var kobar = {kode_brg};
-          $.ajax({
-           type: "POST",
-           url : "<?php echo base_url().'Datatransaksigrosir/get_barang_grosir';?>",
-           data: kobar,
-           success: function(msg){
-             $('#detail_barang_grosir').html(msg);
-             document.getElementById("satuan_grosir").focus();
-           }
-         });
         }
 
-      }
+        const _page = {
+          init: () => {
 
-      const _page = {
-        init: () => {
-          
-          $('select[name=nabar]').select2({
-                ajax: {
-                    url: `<?php echo base_url(); ?>Autocomplete`,
-                    dataType: 'json',
+            $('select[name=nabar]').select2({
+              ajax: {
+                url: `<?php echo base_url(); ?>Autocomplete`,
+                dataType: 'json',
                     // delay: 250,
                     data: function (params) {
-                        return {
-                          Search: params.term
-                        };
+                      return {
+                        Search: params.term
+                      };
                     },
                     processResults: function (data, params) {
-                        params.page = params.page || 1;
-                        return {
-                            results: $.map(data, function (item) {
-                                return {
-                                    text : `${item.nama_brg}`,
-                                    id: item.barcode_brg,
-                                }
-                            }),
-                            pagination: {
-                                more: (params.page * 30) < data
-                            }
+                      params.page = params.page || 1;
+                      return {
+                        results: $.map(data, function (item) {
+                          return {
+                            text : `${item.nama_brg}`,
+                            id: item.barcode_brg,
+                          }
+                        }),
+                        pagination: {
+                          more: (params.page * 30) < data
                         }
+                      }
                     },
                     cache: true,
-                },
-                minimumInputLength: 3,
-            })
+                  },
+                  minimumInputLength: 3,
+                })
+          }
         }
-      }
 
-    </script>
-    <?php $this->load->view('_layout/_js'); ?>
+      </script>
+      <?php $this->load->view('_layout/_js'); ?>
