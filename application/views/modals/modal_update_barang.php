@@ -83,7 +83,7 @@
                     <i class="glyphicon glyphicon-usd"></i>
                   </span>
                   <input type="text" class="form-control FormatKey text-right v_hargabeli_dus_update"
-                    data-category="dus" placeholder="Dus" name="v_hrgbeli_dus" aria-describedby="sizing-addon2"
+                    data-category="dus" placeholder="Karton" name="v_hrgbeli_dus" aria-describedby="sizing-addon2"
                     maxlength="10" value="<?php echo $dataBarang->hrg_beli_dus; ?>">
                 </div>
               </div>
@@ -121,7 +121,7 @@
                     <i class="glyphicon glyphicon-tag"></i>
                   </span>
                   <input type="text" class="form-control FormatKey text-right sell_update v_dus_hrgjual_retail_update"
-                    data-category="dus" placeholder="Harga jual dus retail" name="v_dus_hrgjual_retail"
+                    data-category="dus" placeholder="Harga jual karton retail" name="v_dus_hrgjual_retail"
                     aria-describedby="sizing-addon2" maxlength="10"
                     value="<?php echo $dataBarang->dus_hrgjual_retail; ?>">
                 </div>
@@ -156,7 +156,7 @@
                     <i class="glyphicon glyphicon-tags"></i>
                   </span>
                   <input type="text" class="form-control FormatKey text-right sell_update v_dus_hrgjual_grosir_update"
-                    data-category="dus" placeholder="Harga jual dus grosir" name="v_dus_hrgjual_grosir"
+                    data-category="dus" placeholder="Harga jual karton grosir" name="v_dus_hrgjual_grosir"
                     aria-describedby="sizing-addon2" maxlength="10"
                     value="<?php echo $dataBarang->dus_hrgjual_grosir; ?>">
                 </div>

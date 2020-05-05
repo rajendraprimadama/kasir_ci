@@ -10,11 +10,11 @@
     
   </div>
   <!-- /.box-header -->
-  <div class="box-body">
-    <table id="list-data" class="table table-bordered table-striped">
+  <div class="box-body table-responsive">
+    <table id="list-data" class="table table-bordered table-xs table-hover table-striped" style="width:100%">
       <thead>
         <tr class="text-uppercase">
-          <th class="text-center" width="5%" rowspan="2">No</th>
+          <th class="text-center" width="1%" rowspan="2">No</th>
           <th class="text-center" rowspan="2">ID Barang</th>
           <th class="text-center" rowspan="2">Nama Barang</th>
           <th class="text-center" rowspan="2">Kategori</th>
@@ -28,14 +28,14 @@
         <tr class="text-uppercase">
           <th class="text-center">pcs</th>
           <th class="text-center">pax</th>
-          <th class="text-center">dus</th>
+          <th class="text-center">karton</th>
 
           <th class="text-center">pcs</th>
           <th class="text-center">pax</th>
-          <th class="text-center">dus</th>
+          <th class="text-center">karton</th>
           <th class="text-center">pcs</th>
           <th class="text-center">pax</th>
-          <th class="text-center">dus</th>
+          <th class="text-center">karton</th>
 
         </tr>
       </thead>

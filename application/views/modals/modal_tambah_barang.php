@@ -68,7 +68,7 @@
                     <span class="input-group-addon" id="sizing-addon2">
                     <i class="glyphicon glyphicon-usd"></i>
                   </span>
-                  <input type="text" class="form-control FormatKey text-right v_hrgbeli_dus" data-category="dus" placeholder="Dus" name="v_hrgbeli_dus" aria-describedby="sizing-addon2" maxlength="10">
+                  <input type="text" class="form-control FormatKey text-right v_hrgbeli_dus" data-category="dus" placeholder="Karton" name="v_hrgbeli_dus" aria-describedby="sizing-addon2" maxlength="10">
                 </div>
               </div>
             </div>
@@ -98,7 +98,7 @@
                     <span class="input-group-addon" id="sizing-addon2">
                       <i class="glyphicon glyphicon-tag"></i>
                     </span>
-                    <input type="text" class="form-control FormatKey text-right sell" data-category="dus" placeholder="Harga jual dus retail" name="v_dus_hrgjual_retail" aria-describedby="sizing-addon2" maxlength="10">
+                    <input type="text" class="form-control FormatKey text-right sell" data-category="dus" placeholder="Harga jual karton retail" name="v_dus_hrgjual_retail" aria-describedby="sizing-addon2" maxlength="10">
                   </div>
                 </fieldset>
               </div>
@@ -124,7 +124,7 @@
                     <span class="input-group-addon" id="sizing-addon2">
                       <i class="glyphicon glyphicon-tags"></i>
                     </span>
-                    <input type="text" class="form-control FormatKey text-right sell" data-category="dus" placeholder="Harga jual dus grosir" name="v_dus_hrgjual_grosir" aria-describedby="sizing-addon2" maxlength="10">
+                    <input type="text" class="form-control FormatKey text-right sell" data-category="dus" placeholder="Harga jual karton grosir" name="v_dus_hrgjual_grosir" aria-describedby="sizing-addon2" maxlength="10">
                   </div>
                 </fieldset>
               </div>

@@ -52,10 +52,10 @@
                             <tr class="text-uppercase">
                                 <th class="text-center">pcs</th>
                                 <th class="text-center">pax</th>
-                                <th class="text-center">dus</th>
+                                <th class="text-center">karton</th>
                                 <th class="text-center">pcs</th>
                                 <th class="text-center">pax</th>
-                                <th class="text-center">dus</th>
+                                <th class="text-center">karton</th>
                             </tr>
                             </thead>
                             <tbody>
