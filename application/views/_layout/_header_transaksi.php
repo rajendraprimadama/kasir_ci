@@ -36,10 +36,15 @@
                                         <li><a href="<?php echo base_url('Datatransaksi'); ?>">Penjualan</a></li>
                                         <?php
                                     }else {
+                                        if($userdata->authority_level=="KASIR") {
                                         ?>
-                                        <li><a href="<?php echo $userdata->authority_level=="KASIR" ? base_url('Databarang/listBarang') : base_url('Databarang'); ?>">Daftar Barang</a></li>
+                                            <li><a href="<?php echo base_url('Databarang/listBarang'); ?>">Daftar Barang</a></li>
                                         <?php
-
+                                        } else {
+                                            ?>
+                                            <li><a href="<?php echo base_url('Databarang'); ?>">Halaman Utama</a></li>
+                                            <?php
+                                        }
                                     }
                                     ?>
                                     <li><a href="<?php echo base_url('Auth/logout'); ?>">Sign out</a></li>
