@@ -42,7 +42,7 @@
                             <thead class="text-uppercase">
                             <tr class="text-uppercase">
                                 <th class="text-center" width="5%" rowspan="2">No</th>
-                                <th class="text-center" rowspan="2">ID Barang</th>
+                                <th class="text-center" rowspan="2">Kode Barcode</th>
                                 <th class="text-center" rowspan="2">Nama Barang</th>
                                 <th class="text-center" rowspan="2">Kategori</th>
 
@@ -66,7 +66,7 @@
                                             ?>
                                             <tr>
                                                 <td class="text-center"><?php echo $no; ?></td>
-                                                <td><?php echo $val->id_brg; ?></td>
+                                                <td><?php echo $val->barcode_brg; ?></td>
                                                 <td><?php echo $val->nama_brg; ?></td>
                                                 <td><?php echo $val->kategori; ?></td>
                                                 <td class="text-right"><?php echo $val->pcs_hrgjual_retail; ?></td>

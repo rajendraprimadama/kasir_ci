@@ -15,7 +15,7 @@
       <thead>
         <tr class="text-uppercase">
           <th class="text-center" width="1%" rowspan="2">No</th>
-          <th class="text-center" rowspan="2">ID Barang</th>
+          <th class="text-center" rowspan="2">Kode Barcode</th>
           <th class="text-center" rowspan="2">Nama Barang</th>
           <th class="text-center" rowspan="2">Kategori</th>
           <th class="text-center" colspan="3">Harga Beli</th>
